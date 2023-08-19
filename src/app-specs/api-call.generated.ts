@@ -66,70 +66,121 @@ export class APICall {
 
 
   public async register(body: Register.Body, ): Promise<Register.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.post<Register.Output>(Register.Endpoint.url, body, {  }))!.data;
   }
 
   public async login(body: Login.Body, ): Promise<Login.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.post<Login.Output>(Login.Endpoint.url, body, {  }))!.data;
   }
 
   public async myProfile(query: MyProfile.Query, header: MyProfile.Header, ): Promise<MyProfile.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<MyProfile.Output>(MyProfile.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async myInvoice(query: MyInvoice.Query, header: MyInvoice.Header, ): Promise<MyInvoice.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<MyInvoice.Output>(MyInvoice.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async getInvoiceDetail(query: GetInvoiceDetail.Query, header: GetInvoiceDetail.Header, ): Promise<GetInvoiceDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<GetInvoiceDetail.Output>(GetInvoiceDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async myCertificate(query: MyCertificate.Query, header: MyCertificate.Header, ): Promise<MyCertificate.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<MyCertificate.Output>(MyCertificate.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async getCertificateDetail(query: GetCertificateDetail.Query, header: GetCertificateDetail.Header, ): Promise<GetCertificateDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<GetCertificateDetail.Output>(GetCertificateDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async uploadAssignment(body: UploadAssignment.Body, header: UploadAssignment.Header, ): Promise<UploadAssignment.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.post<UploadAssignment.Output>(UploadAssignment.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
   public async checkInOutMaterialOfflineClass(body: CheckInOutMaterialOfflineClass.Body, header: CheckInOutMaterialOfflineClass.Header, ): Promise<CheckInOutMaterialOfflineClass.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.post<CheckInOutMaterialOfflineClass.Output>(CheckInOutMaterialOfflineClass.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
   public async checkInOutMaterialOnlineClass(body: CheckInOutMaterialOnlineClass.Body, header: CheckInOutMaterialOnlineClass.Header, ): Promise<CheckInOutMaterialOnlineClass.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.post<CheckInOutMaterialOnlineClass.Output>(CheckInOutMaterialOnlineClass.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
   public async submitQuizAnswer(body: SubmitQuizAnswer.Body, header: SubmitQuizAnswer.Header, ): Promise<SubmitQuizAnswer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.post<SubmitQuizAnswer.Output>(SubmitQuizAnswer.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
   public async getTraining(query: GetTraining.Query, ): Promise<GetTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<GetTraining.Output>(GetTraining.Endpoint.url, { params: query,  }))!.data;
   }
 
   public async getTrainingDetail(query: GetTrainingDetail.Query, ): Promise<GetTrainingDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<GetTrainingDetail.Output>(GetTrainingDetail.Endpoint.url, { params: query,  }))!.data;
   }
 
   public async getTrainer(query: GetTrainer.Query, ): Promise<GetTrainer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<GetTrainer.Output>(GetTrainer.Endpoint.url, { params: query,  }))!.data;
   }
 
   public async getTrainerDetail(query: GetTrainerDetail.Query, ): Promise<GetTrainerDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<GetTrainerDetail.Output>(GetTrainerDetail.Endpoint.url, { params: query,  }))!.data;
   }
 
   public async settingData(query: SettingData.Query, header: SettingData.Header, ): Promise<SettingData.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<SettingData.Output>(SettingData.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async settingDetail(query: SettingDetail.Query, header: SettingDetail.Header, ): Promise<SettingDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.get<SettingDetail.Output>(SettingDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 

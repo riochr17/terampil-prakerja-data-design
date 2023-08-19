@@ -1,4 +1,7 @@
 
   public async {{function_name}}({{function_parameters}}): Promise<{{classname}}.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
     return (await this.axios_instance?.put<{{classname}}.Output>({{classname}}.Endpoint.url, {{#if body}}body{{else}}{}{{/if}}, {{request_options}}))!.data;
   }
