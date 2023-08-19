@@ -38,7 +38,7 @@ export class APICall {
     return APICall._instance;
   }
 
-  public init(parameters: APICallParameters) {
+  public init(parameters: APICallParameters): APICall {
     this.axios_instance = axios.create({
       baseURL: parameters.base_url
     });
@@ -48,6 +48,8 @@ export class APICall {
     if (parameters.intercept?.response) {
       this.addResponseLogInterceptor();
     }
+
+    return this;
   }
 
   private async addRequestLogInterceptor() {
