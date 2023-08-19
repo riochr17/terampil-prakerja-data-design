@@ -30,10 +30,9 @@ export class APICall {
   private static _instance?: APICall;
   private axios_instance?: AxiosInstance;
 
-  public static instance(parameters: APICallParameters): APICall {
+  public static instance(): APICall {
     if (!APICall._instance) {
       APICall._instance = new APICall();
-      APICall._instance.init(parameters);
     }
 
     return APICall._instance;
