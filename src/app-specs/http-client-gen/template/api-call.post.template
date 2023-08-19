@@ -1,0 +1,4 @@
+
+  public async {{function_name}}({{function_parameters}}): Promise<{{classname}}.Output> {
+    return (await this.axios_instance?.post<{{classname}}.Output>({{classname}}.Endpoint.url, {{#if body}}body{{else}}{}{{/if}}, {{request_options}}))!.data;
+  }

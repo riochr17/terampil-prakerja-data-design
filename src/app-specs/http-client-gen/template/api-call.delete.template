@@ -1,0 +1,4 @@
+
+  public async {{function_name}}({{function_parameters}}): Promise<{{classname}}.Output> {
+    return (await this.axios_instance?.delete<{{classname}}.Output>({{classname}}.Endpoint.url, {{request_options}}))!.data;
+  }

@@ -1,0 +1,67 @@
+{
+  "name": "graf-data-design",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "nodemonConfig": {
+    "exec": "npx tsc && npm start",
+    "watch": [
+      "*.ts"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.ts",
+      "*.spec.ts"
+    ]
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon",
+    "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/data-source.ts",
+    "generate-migration": "ts-node ./node_modules/typeorm/cli.js migration:generate -d src/data-source.ts",
+    "generate-http-server": "ts-node ./src/app-specs/generate-http-server.ts",
+    "generate-http-client": "ts-node ./src/app-specs/generate-http-client.ts",
+    "generate-http-code": "npm run generate-http-server && npm run generate-http-client",
+    "seed": "ts-node src/seeder.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.1.3",
+    "axios-curlirize": "1.3.7",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "excel4node": "^1.8.0",
+    "express": "^4.18.2",
+    "fast-csv": "^4.3.6",
+    "handlebars": "^4.7.8",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.10",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^18.11.3",
+    "@types/uuid": "^8.3.4",
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}

@@ -1,0 +1,103 @@
+import express, { Express, NextFunction, Request, Response, Router } from 'express';
+{{#each import_dependencies}}{{this}}{{/each}}
+import { ClassConstructor, plainToInstance } from 'class-transformer';
+import { ValidationError, validateOrReject } from 'class-validator';
+import cors from 'cors';
+import momentTz from 'moment-timezone';
+import { AppDataSource } from '../data-source';
+
+export namespace BackendSystem {
+  export namespace Logic {
+{{#each logic_types}}{{this}}{{/each}}
+  }
+  
+  export interface SystemParam {
+    port?: number
+  }
+  
+  export type ExpressMethod = 'get' | 'post' | 'put' | 'delete';
+
+  export interface ExpressRequestData {
+    body?: ClassConstructor<any>
+    header?: ClassConstructor<any>
+    query?: ClassConstructor<any>
+  }
+
+  export class Engine {
+    private express?: Express;
+
+
+    private errorToString(list_error: ValidationError[]): string {
+      return list_error.map(err => {
+        const constrains: any = err.constraints;
+        const keys = Object.keys(constrains);
+        return keys.filter(key => constrains[key].length > 0).map(key => constrains[key]).join(', ');
+      }).join(', ');
+    }
+
+    private createRoute<X>(method: ExpressMethod, path: string, clss: ExpressRequestData, processor: X): Router {
+      const router = Router();
+      router[method](path, async (req: Request, res: Response) => {
+        try {
+          let query = {};
+          let header = {};
+          let body = {};
+
+          if (clss.query) {
+            query = plainToInstance(clss.query, req.query);
+          }
+          if (clss.body) {
+            body = plainToInstance(clss.body, req.body);
+          }
+          if (clss.header) {
+            header = plainToInstance(clss.header, req.headers);
+          }
+          
+          try {
+            if (clss.query) {
+              await validateOrReject(query);
+            }
+            if (clss.body) {
+              await validateOrReject(body);
+            }
+            if (clss.header) {
+              await validateOrReject(header);
+            }
+          } catch (err_validation: any) {
+            return res.status(400).end(this.errorToString(err_validation));
+          }
+          
+          const output = await (processor as Function)({ query, body, header });
+          res.json(output);
+        } catch (err: any) {
+          const [err_code, ...msg]: string[] = err.message.split(':');
+          const has_valid_error_code = /^[1-5]\d{2}$/.test(err_code);
+          const message: string = has_valid_error_code ? msg.join(':') : err.message;
+          res.status(has_valid_error_code ? parseInt(err_code) : 500).end(message.trim());
+        }
+      });
+
+      return router;
+    }
+
+    public async init(param: SystemParam): Promise<Engine> {
+      momentTz.tz.setDefault('Asia/Jakarta');
+      await AppDataSource.initialize();
+      console.log('Data source has been initialized!');
+      
+      this.express = express();
+      const port = param?.port ?? process.env.PORT ?? 3000;
+      
+      this.express.use(cors());
+      this.express.use(express.json({limit: '5mb'}));
+      this.express.set('trust proxy', true);
+      this.express.listen(port, () => {
+        console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+      });
+      
+      return this;
+    }
+
+{{#each modules}}{{this}}{{/each}}
+  }
+}

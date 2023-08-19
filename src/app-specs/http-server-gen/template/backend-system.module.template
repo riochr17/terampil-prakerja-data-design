@@ -1,0 +1,12 @@
+
+    public {{function_name}}(logic: Logic.I{{classname}}) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        {{classname}}.Endpoint.method, 
+        {{classname}}.Endpoint.url, 
+        { {{#if query}}query: {{classname}}.Query, {{/if}}{{#if body}}body: {{classname}}.Body, {{/if}}{{#if header}}header: {{classname}}.Header, {{/if}} },
+        logic
+      ));
+    }
