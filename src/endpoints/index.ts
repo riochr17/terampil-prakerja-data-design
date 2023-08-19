@@ -2,7 +2,6 @@ import { plainToInstance } from "class-transformer";
 import { IsNotEmpty, IsOptional, IsString, validateOrReject } from "class-validator";
 import { Request, Response, Router } from "express";
 import { AppDataSource } from "../data-source";
-import { Admin } from "../entity/Admin.entity";
 import { Training } from "../entity/Training.entity";
 
 const router_test = Router();

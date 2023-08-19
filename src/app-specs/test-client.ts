@@ -10,7 +10,7 @@ const register_body: Register.Body = {
 
 (async () => {
   try {
-    const result = await new APICall({ base_url: 'http://localhost:8000' }).register(register_body);
+    const result = await new APICall({ base_url: 'http://localhost:8000', intercept: { request: true, response: true } }).register(register_body);
     console.log('success', result);
   } catch (err: any) {
     console.error(err.response.data);
