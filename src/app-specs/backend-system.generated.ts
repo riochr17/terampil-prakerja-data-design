@@ -6,6 +6,7 @@ import { MyInvoice } from "./backend-specs/account-data.design";
 import { GetInvoiceDetail } from "./backend-specs/account-data.design";
 import { MyCertificate } from "./backend-specs/account-data.design";
 import { GetCertificateDetail } from "./backend-specs/account-data.design";
+import { AdminLogin } from "./backend-specs/admin.login.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -32,6 +33,7 @@ export namespace BackendSystem {
     export type IGetInvoiceDetail = (param: { query: GetInvoiceDetail.Query, header: GetInvoiceDetail.Header,  }) => Promise<GetInvoiceDetail.Output>
     export type IMyCertificate = (param: { query: MyCertificate.Query, header: MyCertificate.Header,  }) => Promise<MyCertificate.Output>
     export type IGetCertificateDetail = (param: { query: GetCertificateDetail.Query, header: GetCertificateDetail.Header,  }) => Promise<GetCertificateDetail.Output>
+    export type IAdminLogin = (param: { body: AdminLogin.Body,  }) => Promise<AdminLogin.Output>
     export type IUploadAssignment = (param: { body: UploadAssignment.Body, header: UploadAssignment.Header,  }) => Promise<UploadAssignment.Output>
     export type ICheckInOutMaterialOfflineClass = (param: { body: CheckInOutMaterialOfflineClass.Body, header: CheckInOutMaterialOfflineClass.Header,  }) => Promise<CheckInOutMaterialOfflineClass.Output>
     export type ICheckInOutMaterialOnlineClass = (param: { body: CheckInOutMaterialOnlineClass.Body, header: CheckInOutMaterialOnlineClass.Header,  }) => Promise<CheckInOutMaterialOnlineClass.Output>
@@ -213,6 +215,18 @@ export namespace BackendSystem {
         GetCertificateDetail.Endpoint.method, 
         GetCertificateDetail.Endpoint.url, 
         { query: GetCertificateDetail.Query, header: GetCertificateDetail.Header,  },
+        logic
+      ));
+    }
+
+    public adminLogin(logic: Logic.IAdminLogin) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminLogin.Endpoint.method, 
+        AdminLogin.Endpoint.url, 
+        { body: AdminLogin.Body,  },
         logic
       ));
     }

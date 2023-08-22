@@ -6,6 +6,7 @@ import { MyInvoice } from "./backend-specs/account-data.design";
 import { GetInvoiceDetail } from "./backend-specs/account-data.design";
 import { MyCertificate } from "./backend-specs/account-data.design";
 import { GetCertificateDetail } from "./backend-specs/account-data.design";
+import { AdminLogin } from "./backend-specs/admin.login.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -114,6 +115,13 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<GetCertificateDetail.Output>(GetCertificateDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminLogin(body: AdminLogin.Body, ): Promise<AdminLogin.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminLogin.Output>(AdminLogin.Endpoint.url, body, {  }))!.data;
   }
 
   public async uploadAssignment(body: UploadAssignment.Body, header: UploadAssignment.Header, ): Promise<UploadAssignment.Output> {
