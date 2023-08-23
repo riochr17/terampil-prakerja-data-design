@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { MaterialQuiz } from './MaterialQuiz.entity';
+import { GroupQuiz } from './GroupQuiz.entity';
 import { QuizQuestion } from './QuizQuestion.entity';
 
 
@@ -8,10 +8,10 @@ export class Quiz {
   @PrimaryGeneratedColumn('increment')
   id!: number;
 
-  @OneToMany(() => MaterialQuiz, _ => _.quiz, {
+  @OneToMany(() => GroupQuiz, _ => _.quiz, {
     cascade: true
   })
-  list_material_quiz_quiz!: MaterialQuiz[];
+  list_group_quiz_quiz!: GroupQuiz[];
 
   @OneToMany(() => QuizQuestion, _ => _.quiz, {
     cascade: true
