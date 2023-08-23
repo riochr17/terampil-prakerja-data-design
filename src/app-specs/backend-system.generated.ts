@@ -91,8 +91,7 @@ export namespace BackendSystem {
   }
 
   export class Engine {
-    private express?: Express;
-
+    public express?: Express;
 
     private errorToString(list_error: ValidationError[]): string {
       return list_error.map(err => {
