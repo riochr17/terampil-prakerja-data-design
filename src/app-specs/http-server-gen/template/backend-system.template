@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express, { Express, NextFunction, Request, Response, Router } from 'express';
 {{#each import_dependencies}}{{this}}{{/each}}
 import { ClassConstructor, plainToInstance } from 'class-transformer';

@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express, { Express, NextFunction, Request, Response, Router } from 'express';
 import { Register } from "./backend-specs/account-auth.design";
 import { Login } from "./backend-specs/account-auth.design";
