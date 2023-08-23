@@ -134,3 +134,21 @@ export namespace AdminDeleteBankSoal {
     public static url: string = '/admin/bank-soal';
   }
 }
+
+export namespace AdminDetailBankSoal {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Quiz ID cannot be empty' })
+    @IsNumber({}, { message: 'Quiz ID must be a number' })
+    id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = boolean;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/admin/bank-soal/detail';
+  }
+}

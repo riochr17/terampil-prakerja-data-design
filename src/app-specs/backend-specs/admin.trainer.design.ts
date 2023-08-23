@@ -134,3 +134,21 @@ export namespace AdminDeleteTrainer {
     public static url: string = '/admin/trainer';
   }
 }
+
+export namespace AdminDetailTrainer {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Trainer ID cannot be empty' })
+    @IsNumber({}, { message: 'Trainer ID must be a number' })
+    id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = Trainer;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/admin/trainer/detail';
+  }
+}

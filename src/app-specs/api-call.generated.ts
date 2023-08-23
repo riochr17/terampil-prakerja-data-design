@@ -11,15 +11,18 @@ import { AdminGetBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminDetailBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminLogin } from "./backend-specs/admin.login.design";
 import { AdminGetTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminUpdateTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminDeleteTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminDetailTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminGetTraining } from "./backend-specs/admin.training.design";
 import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
 import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
+import { AdminDetailTraining } from "./backend-specs/admin.training.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -158,6 +161,13 @@ export class APICall {
     return (await this.axios_instance?.delete<AdminDeleteBankSoal.Output>(AdminDeleteBankSoal.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
+  public async adminDetailBankSoal(query: AdminDetailBankSoal.Query, header: AdminDetailBankSoal.Header, ): Promise<AdminDetailBankSoal.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailBankSoal.Output>(AdminDetailBankSoal.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
   public async adminLogin(body: AdminLogin.Body, ): Promise<AdminLogin.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
@@ -193,6 +203,13 @@ export class APICall {
     return (await this.axios_instance?.delete<AdminDeleteTrainer.Output>(AdminDeleteTrainer.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
+  public async adminDetailTrainer(query: AdminDetailTrainer.Query, header: AdminDetailTrainer.Header, ): Promise<AdminDetailTrainer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailTrainer.Output>(AdminDetailTrainer.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
   public async adminGetTraining(query: AdminGetTraining.Query, header: AdminGetTraining.Header, ): Promise<AdminGetTraining.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
@@ -219,6 +236,13 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.delete<AdminDeleteTraining.Output>(AdminDeleteTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDetailTraining(query: AdminDetailTraining.Query, header: AdminDetailTraining.Header, ): Promise<AdminDetailTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailTraining.Output>(AdminDetailTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async uploadAssignment(body: UploadAssignment.Body, header: UploadAssignment.Header, ): Promise<UploadAssignment.Output> {
