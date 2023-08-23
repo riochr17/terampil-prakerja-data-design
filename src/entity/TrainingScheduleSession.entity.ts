@@ -16,6 +16,18 @@ export class TrainingScheduleSession {
   @JoinColumn({ name: 'training_session_id' })
   training_session!: TrainingSession;
 
+  @Column({
+    type: 'timestamp',
+    array: false
+  })
+  begin!: Date;
+
+  @Column({
+    type: 'timestamp',
+    array: false
+  })
+  end!: Date;
+
   @CreateDateColumn()
   created_at!: Date;
 

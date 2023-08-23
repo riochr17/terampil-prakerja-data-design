@@ -6,7 +6,19 @@ import { MyInvoice } from "./backend-specs/account-data.design";
 import { GetInvoiceDetail } from "./backend-specs/account-data.design";
 import { MyCertificate } from "./backend-specs/account-data.design";
 import { GetCertificateDetail } from "./backend-specs/account-data.design";
+import { AdminGetBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminLogin } from "./backend-specs/admin.login.design";
+import { AdminGetTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminUpdateTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminDeleteTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminGetTraining } from "./backend-specs/admin.training.design";
+import { AdminCreateTraining } from "./backend-specs/admin.training.design";
+import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
+import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -33,7 +45,19 @@ export namespace BackendSystem {
     export type IGetInvoiceDetail = (param: { query: GetInvoiceDetail.Query, header: GetInvoiceDetail.Header,  }) => Promise<GetInvoiceDetail.Output>
     export type IMyCertificate = (param: { query: MyCertificate.Query, header: MyCertificate.Header,  }) => Promise<MyCertificate.Output>
     export type IGetCertificateDetail = (param: { query: GetCertificateDetail.Query, header: GetCertificateDetail.Header,  }) => Promise<GetCertificateDetail.Output>
+    export type IAdminGetBankSoal = (param: { query: AdminGetBankSoal.Query,  }) => Promise<AdminGetBankSoal.Output>
+    export type IAdminCreateBankSoal = (param: { body: AdminCreateBankSoal.Body,  }) => Promise<AdminCreateBankSoal.Output>
+    export type IAdminUpdateBankSoal = (param: { body: AdminUpdateBankSoal.Body,  }) => Promise<AdminUpdateBankSoal.Output>
+    export type IAdminDeleteBankSoal = (param: { query: AdminDeleteBankSoal.Query,  }) => Promise<AdminDeleteBankSoal.Output>
     export type IAdminLogin = (param: { body: AdminLogin.Body,  }) => Promise<AdminLogin.Output>
+    export type IAdminGetTrainer = (param: { query: AdminGetTrainer.Query,  }) => Promise<AdminGetTrainer.Output>
+    export type IAdminCreateTrainer = (param: { body: AdminCreateTrainer.Body,  }) => Promise<AdminCreateTrainer.Output>
+    export type IAdminUpdateTrainer = (param: { body: AdminUpdateTrainer.Body,  }) => Promise<AdminUpdateTrainer.Output>
+    export type IAdminDeleteTrainer = (param: { query: AdminDeleteTrainer.Query,  }) => Promise<AdminDeleteTrainer.Output>
+    export type IAdminGetTraining = (param: { query: AdminGetTraining.Query,  }) => Promise<AdminGetTraining.Output>
+    export type IAdminCreateTraining = (param: { body: AdminCreateTraining.Body,  }) => Promise<AdminCreateTraining.Output>
+    export type IAdminUpdateTraining = (param: { body: AdminUpdateTraining.Body,  }) => Promise<AdminUpdateTraining.Output>
+    export type IAdminDeleteTraining = (param: { query: AdminDeleteTraining.Query,  }) => Promise<AdminDeleteTraining.Output>
     export type IUploadAssignment = (param: { body: UploadAssignment.Body, header: UploadAssignment.Header,  }) => Promise<UploadAssignment.Output>
     export type ICheckInOutMaterialOfflineClass = (param: { body: CheckInOutMaterialOfflineClass.Body, header: CheckInOutMaterialOfflineClass.Header,  }) => Promise<CheckInOutMaterialOfflineClass.Output>
     export type ICheckInOutMaterialOnlineClass = (param: { body: CheckInOutMaterialOnlineClass.Body, header: CheckInOutMaterialOnlineClass.Header,  }) => Promise<CheckInOutMaterialOnlineClass.Output>
@@ -219,6 +243,54 @@ export namespace BackendSystem {
       ));
     }
 
+    public adminGetBankSoal(logic: Logic.IAdminGetBankSoal) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetBankSoal.Endpoint.method, 
+        AdminGetBankSoal.Endpoint.url, 
+        { query: AdminGetBankSoal.Query,  },
+        logic
+      ));
+    }
+
+    public adminCreateBankSoal(logic: Logic.IAdminCreateBankSoal) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateBankSoal.Endpoint.method, 
+        AdminCreateBankSoal.Endpoint.url, 
+        { body: AdminCreateBankSoal.Body,  },
+        logic
+      ));
+    }
+
+    public adminUpdateBankSoal(logic: Logic.IAdminUpdateBankSoal) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateBankSoal.Endpoint.method, 
+        AdminUpdateBankSoal.Endpoint.url, 
+        { body: AdminUpdateBankSoal.Body,  },
+        logic
+      ));
+    }
+
+    public adminDeleteBankSoal(logic: Logic.IAdminDeleteBankSoal) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteBankSoal.Endpoint.method, 
+        AdminDeleteBankSoal.Endpoint.url, 
+        { query: AdminDeleteBankSoal.Query,  },
+        logic
+      ));
+    }
+
     public adminLogin(logic: Logic.IAdminLogin) {
       if (!this.express) {
         throw new Error(`System have not initialized yet`);
@@ -227,6 +299,102 @@ export namespace BackendSystem {
         AdminLogin.Endpoint.method, 
         AdminLogin.Endpoint.url, 
         { body: AdminLogin.Body,  },
+        logic
+      ));
+    }
+
+    public adminGetTrainer(logic: Logic.IAdminGetTrainer) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetTrainer.Endpoint.method, 
+        AdminGetTrainer.Endpoint.url, 
+        { query: AdminGetTrainer.Query,  },
+        logic
+      ));
+    }
+
+    public adminCreateTrainer(logic: Logic.IAdminCreateTrainer) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateTrainer.Endpoint.method, 
+        AdminCreateTrainer.Endpoint.url, 
+        { body: AdminCreateTrainer.Body,  },
+        logic
+      ));
+    }
+
+    public adminUpdateTrainer(logic: Logic.IAdminUpdateTrainer) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateTrainer.Endpoint.method, 
+        AdminUpdateTrainer.Endpoint.url, 
+        { body: AdminUpdateTrainer.Body,  },
+        logic
+      ));
+    }
+
+    public adminDeleteTrainer(logic: Logic.IAdminDeleteTrainer) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteTrainer.Endpoint.method, 
+        AdminDeleteTrainer.Endpoint.url, 
+        { query: AdminDeleteTrainer.Query,  },
+        logic
+      ));
+    }
+
+    public adminGetTraining(logic: Logic.IAdminGetTraining) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetTraining.Endpoint.method, 
+        AdminGetTraining.Endpoint.url, 
+        { query: AdminGetTraining.Query,  },
+        logic
+      ));
+    }
+
+    public adminCreateTraining(logic: Logic.IAdminCreateTraining) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateTraining.Endpoint.method, 
+        AdminCreateTraining.Endpoint.url, 
+        { body: AdminCreateTraining.Body,  },
+        logic
+      ));
+    }
+
+    public adminUpdateTraining(logic: Logic.IAdminUpdateTraining) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateTraining.Endpoint.method, 
+        AdminUpdateTraining.Endpoint.url, 
+        { body: AdminUpdateTraining.Body,  },
+        logic
+      ));
+    }
+
+    public adminDeleteTraining(logic: Logic.IAdminDeleteTraining) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteTraining.Endpoint.method, 
+        AdminDeleteTraining.Endpoint.url, 
+        { query: AdminDeleteTraining.Query,  },
         logic
       ));
     }

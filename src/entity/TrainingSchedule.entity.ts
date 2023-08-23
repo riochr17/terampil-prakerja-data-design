@@ -28,26 +28,7 @@ export class TrainingSchedule {
     length: 255,
     array: false
   })
-  __title__hapus!: string;
-
-  @Column({
-    type: 'varchar',
-    length: 255,
-    array: false
-  })
   description!: string;
-
-  @Column({
-    type: 'date',
-    array: false
-  })
-  __start_date__hapus!: any;
-
-  @Column({
-    type: 'date',
-    array: false
-  })
-  __end_date__hapus!: any;
 
   @Column({
     type: 'int',

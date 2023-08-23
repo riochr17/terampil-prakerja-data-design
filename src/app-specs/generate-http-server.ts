@@ -3,14 +3,18 @@ import path from 'path';
 import ts from 'typescript';
 import { HttpServerGen } from './http-server-gen/http-server-gen';
 
+export interface ModuleSpecification {
+  name: string
+  body: boolean
+  query: boolean
+  header: boolean
+}
+
 export interface AppSpecification {
   filename: string
   relative_path: string
   fullpath: string
-  module_names: string[]
-  body: boolean
-  query: boolean
-  header: boolean
+  modules: ModuleSpecification[]
 }
 
 function consume(specification: AppSpecification): HttpServerGen.GenericItem[] {
@@ -20,14 +24,15 @@ function consume(specification: AppSpecification): HttpServerGen.GenericItem[] {
     }).replace(/\s+/g, '');
   }
 
-  return specification.module_names.map((module_name: string) => ({
+  // console.log(specification);
+  return specification.modules.map((_module: ModuleSpecification) => ({
     relative_path: specification.relative_path,
     data: {
-      classname: module_name,
-      query: specification.query,
-      header: specification.header,
-      body: specification.body,
-      function_name: toCamelCase(module_name)
+      classname: _module.name,
+      query: _module.query,
+      header: _module.header,
+      body: _module.body,
+      function_name: toCamelCase(_module.name)
     }
   }));
 }
@@ -48,16 +53,21 @@ function getAppSpecs(): HttpServerGen.GenericItem[] {
       continue;
     }
 
-    const module_declaration_names: string[] = module_declaration_statements.map((s: any) => s.name.escapedText);
-    const module_body_statements: string[] = (module_declaration_statements[0] as any).body.statements.map((s: any) => s.name.escapedText);
+    const modules: ModuleSpecification[] = module_declaration_statements.map((s: any) => {
+      const module_body_statements: string[] = s.body.statements.map((r: any) => r.name.escapedText);
+      return {
+        name: s.name.escapedText,
+        body: module_body_statements.includes('Body'),
+        query: module_body_statements.includes('Query'),
+        header: module_body_statements.includes('Header')
+      }
+    });
+    
     const app_specification: AppSpecification = {
       filename,
       relative_path: `./${specification_dir}/` + filename.replace(/\.[^/.]+$/, ''),
       fullpath: filepath,
-      module_names: module_declaration_names,
-      body: module_body_statements.includes('Body'),
-      query: module_body_statements.includes('Query'),
-      header: module_body_statements.includes('Header')
+      modules
     };
     temp.push(...consume(app_specification));
   }

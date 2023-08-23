@@ -6,7 +6,19 @@ import { MyInvoice } from "./backend-specs/account-data.design";
 import { GetInvoiceDetail } from "./backend-specs/account-data.design";
 import { MyCertificate } from "./backend-specs/account-data.design";
 import { GetCertificateDetail } from "./backend-specs/account-data.design";
+import { AdminGetBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminLogin } from "./backend-specs/admin.login.design";
+import { AdminGetTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminUpdateTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminDeleteTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminGetTraining } from "./backend-specs/admin.training.design";
+import { AdminCreateTraining } from "./backend-specs/admin.training.design";
+import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
+import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -117,11 +129,95 @@ export class APICall {
     return (await this.axios_instance?.get<GetCertificateDetail.Output>(GetCertificateDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
+  public async adminGetBankSoal(query: AdminGetBankSoal.Query, ): Promise<AdminGetBankSoal.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetBankSoal.Output>(AdminGetBankSoal.Endpoint.url, { params: query,  }))!.data;
+  }
+
+  public async adminCreateBankSoal(body: AdminCreateBankSoal.Body, ): Promise<AdminCreateBankSoal.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateBankSoal.Output>(AdminCreateBankSoal.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminUpdateBankSoal(body: AdminUpdateBankSoal.Body, ): Promise<AdminUpdateBankSoal.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateBankSoal.Output>(AdminUpdateBankSoal.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminDeleteBankSoal(query: AdminDeleteBankSoal.Query, ): Promise<AdminDeleteBankSoal.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteBankSoal.Output>(AdminDeleteBankSoal.Endpoint.url, { params: query,  }))!.data;
+  }
+
   public async adminLogin(body: AdminLogin.Body, ): Promise<AdminLogin.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.post<AdminLogin.Output>(AdminLogin.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminGetTrainer(query: AdminGetTrainer.Query, ): Promise<AdminGetTrainer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetTrainer.Output>(AdminGetTrainer.Endpoint.url, { params: query,  }))!.data;
+  }
+
+  public async adminCreateTrainer(body: AdminCreateTrainer.Body, ): Promise<AdminCreateTrainer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateTrainer.Output>(AdminCreateTrainer.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminUpdateTrainer(body: AdminUpdateTrainer.Body, ): Promise<AdminUpdateTrainer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateTrainer.Output>(AdminUpdateTrainer.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminDeleteTrainer(query: AdminDeleteTrainer.Query, ): Promise<AdminDeleteTrainer.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteTrainer.Output>(AdminDeleteTrainer.Endpoint.url, { params: query,  }))!.data;
+  }
+
+  public async adminGetTraining(query: AdminGetTraining.Query, ): Promise<AdminGetTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetTraining.Output>(AdminGetTraining.Endpoint.url, { params: query,  }))!.data;
+  }
+
+  public async adminCreateTraining(body: AdminCreateTraining.Body, ): Promise<AdminCreateTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateTraining.Output>(AdminCreateTraining.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminUpdateTraining(body: AdminUpdateTraining.Body, ): Promise<AdminUpdateTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateTraining.Output>(AdminUpdateTraining.Endpoint.url, body, {  }))!.data;
+  }
+
+  public async adminDeleteTraining(query: AdminDeleteTraining.Query, ): Promise<AdminDeleteTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteTraining.Output>(AdminDeleteTraining.Endpoint.url, { params: query,  }))!.data;
   }
 
   public async uploadAssignment(body: UploadAssignment.Body, header: UploadAssignment.Header, ): Promise<UploadAssignment.Output> {
