@@ -3,6 +3,7 @@ import { BaseEndpoint, EndpointMethod, ExpressTransform } from "../base-design";
 import { Admin } from "../../entity/Admin.entity";
 import { Transform, Type } from "class-transformer";
 import { Trainer } from "../../entity/Trainer.entity";
+import { AuthorizedData } from "./authorization.design";
 
 export namespace AdminGetTrainer {
   export class Query {
@@ -16,6 +17,8 @@ export namespace AdminGetTrainer {
     @IsNumber({}, { message: 'Offset must be a number' })
     offset?: number;
   }
+
+  export class Header extends AuthorizedData {}
 
   export interface Output {
     total: number
@@ -50,6 +53,8 @@ export namespace AdminCreateTrainer {
     @IsString({ message: 'Signature Iamge URL must be a string' })
     signature_image_url!: string;
   }
+
+  export class Header extends AuthorizedData {}
 
   export type Output = Trainer;
 
@@ -102,6 +107,8 @@ export namespace AdminUpdateTrainer {
     signature_image_url!: string;
   }
 
+  export class Header extends AuthorizedData {}
+
   export type Output = boolean;
 
   export abstract class Endpoint extends BaseEndpoint<any, Body, any, Output> {
@@ -117,6 +124,8 @@ export namespace AdminDeleteTrainer {
     @IsNumber({}, { message: 'Trainer ID must be a number' })
     id!: number;
   }
+
+  export class Header extends AuthorizedData {}
 
   export type Output = boolean;
 

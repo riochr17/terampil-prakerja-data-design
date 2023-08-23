@@ -46,19 +46,19 @@ export namespace BackendSystem {
     export type IGetInvoiceDetail = (param: { query: GetInvoiceDetail.Query, header: GetInvoiceDetail.Header,  }) => Promise<GetInvoiceDetail.Output>
     export type IMyCertificate = (param: { query: MyCertificate.Query, header: MyCertificate.Header,  }) => Promise<MyCertificate.Output>
     export type IGetCertificateDetail = (param: { query: GetCertificateDetail.Query, header: GetCertificateDetail.Header,  }) => Promise<GetCertificateDetail.Output>
-    export type IAdminGetBankSoal = (param: { query: AdminGetBankSoal.Query,  }) => Promise<AdminGetBankSoal.Output>
-    export type IAdminCreateBankSoal = (param: { body: AdminCreateBankSoal.Body,  }) => Promise<AdminCreateBankSoal.Output>
-    export type IAdminUpdateBankSoal = (param: { body: AdminUpdateBankSoal.Body,  }) => Promise<AdminUpdateBankSoal.Output>
-    export type IAdminDeleteBankSoal = (param: { query: AdminDeleteBankSoal.Query,  }) => Promise<AdminDeleteBankSoal.Output>
+    export type IAdminGetBankSoal = (param: { query: AdminGetBankSoal.Query, header: AdminGetBankSoal.Header,  }) => Promise<AdminGetBankSoal.Output>
+    export type IAdminCreateBankSoal = (param: { body: AdminCreateBankSoal.Body, header: AdminCreateBankSoal.Header,  }) => Promise<AdminCreateBankSoal.Output>
+    export type IAdminUpdateBankSoal = (param: { body: AdminUpdateBankSoal.Body, header: AdminUpdateBankSoal.Header,  }) => Promise<AdminUpdateBankSoal.Output>
+    export type IAdminDeleteBankSoal = (param: { query: AdminDeleteBankSoal.Query, header: AdminDeleteBankSoal.Header,  }) => Promise<AdminDeleteBankSoal.Output>
     export type IAdminLogin = (param: { body: AdminLogin.Body,  }) => Promise<AdminLogin.Output>
-    export type IAdminGetTrainer = (param: { query: AdminGetTrainer.Query,  }) => Promise<AdminGetTrainer.Output>
-    export type IAdminCreateTrainer = (param: { body: AdminCreateTrainer.Body,  }) => Promise<AdminCreateTrainer.Output>
-    export type IAdminUpdateTrainer = (param: { body: AdminUpdateTrainer.Body,  }) => Promise<AdminUpdateTrainer.Output>
-    export type IAdminDeleteTrainer = (param: { query: AdminDeleteTrainer.Query,  }) => Promise<AdminDeleteTrainer.Output>
-    export type IAdminGetTraining = (param: { query: AdminGetTraining.Query,  }) => Promise<AdminGetTraining.Output>
-    export type IAdminCreateTraining = (param: { body: AdminCreateTraining.Body,  }) => Promise<AdminCreateTraining.Output>
-    export type IAdminUpdateTraining = (param: { body: AdminUpdateTraining.Body,  }) => Promise<AdminUpdateTraining.Output>
-    export type IAdminDeleteTraining = (param: { query: AdminDeleteTraining.Query,  }) => Promise<AdminDeleteTraining.Output>
+    export type IAdminGetTrainer = (param: { query: AdminGetTrainer.Query, header: AdminGetTrainer.Header,  }) => Promise<AdminGetTrainer.Output>
+    export type IAdminCreateTrainer = (param: { body: AdminCreateTrainer.Body, header: AdminCreateTrainer.Header,  }) => Promise<AdminCreateTrainer.Output>
+    export type IAdminUpdateTrainer = (param: { body: AdminUpdateTrainer.Body, header: AdminUpdateTrainer.Header,  }) => Promise<AdminUpdateTrainer.Output>
+    export type IAdminDeleteTrainer = (param: { query: AdminDeleteTrainer.Query, header: AdminDeleteTrainer.Header,  }) => Promise<AdminDeleteTrainer.Output>
+    export type IAdminGetTraining = (param: { query: AdminGetTraining.Query, header: AdminGetTraining.Header,  }) => Promise<AdminGetTraining.Output>
+    export type IAdminCreateTraining = (param: { body: AdminCreateTraining.Body, header: AdminCreateTraining.Header,  }) => Promise<AdminCreateTraining.Output>
+    export type IAdminUpdateTraining = (param: { body: AdminUpdateTraining.Body, header: AdminUpdateTraining.Header,  }) => Promise<AdminUpdateTraining.Output>
+    export type IAdminDeleteTraining = (param: { query: AdminDeleteTraining.Query, header: AdminDeleteTraining.Header,  }) => Promise<AdminDeleteTraining.Output>
     export type IUploadAssignment = (param: { body: UploadAssignment.Body, header: UploadAssignment.Header,  }) => Promise<UploadAssignment.Output>
     export type ICheckInOutMaterialOfflineClass = (param: { body: CheckInOutMaterialOfflineClass.Body, header: CheckInOutMaterialOfflineClass.Header,  }) => Promise<CheckInOutMaterialOfflineClass.Output>
     export type ICheckInOutMaterialOnlineClass = (param: { body: CheckInOutMaterialOnlineClass.Body, header: CheckInOutMaterialOnlineClass.Header,  }) => Promise<CheckInOutMaterialOnlineClass.Output>
@@ -251,7 +251,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminGetBankSoal.Endpoint.method, 
         AdminGetBankSoal.Endpoint.url, 
-        { query: AdminGetBankSoal.Query,  },
+        { query: AdminGetBankSoal.Query, header: AdminGetBankSoal.Header,  },
         logic
       ));
     }
@@ -263,7 +263,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminCreateBankSoal.Endpoint.method, 
         AdminCreateBankSoal.Endpoint.url, 
-        { body: AdminCreateBankSoal.Body,  },
+        { body: AdminCreateBankSoal.Body, header: AdminCreateBankSoal.Header,  },
         logic
       ));
     }
@@ -275,7 +275,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminUpdateBankSoal.Endpoint.method, 
         AdminUpdateBankSoal.Endpoint.url, 
-        { body: AdminUpdateBankSoal.Body,  },
+        { body: AdminUpdateBankSoal.Body, header: AdminUpdateBankSoal.Header,  },
         logic
       ));
     }
@@ -287,7 +287,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminDeleteBankSoal.Endpoint.method, 
         AdminDeleteBankSoal.Endpoint.url, 
-        { query: AdminDeleteBankSoal.Query,  },
+        { query: AdminDeleteBankSoal.Query, header: AdminDeleteBankSoal.Header,  },
         logic
       ));
     }
@@ -311,7 +311,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminGetTrainer.Endpoint.method, 
         AdminGetTrainer.Endpoint.url, 
-        { query: AdminGetTrainer.Query,  },
+        { query: AdminGetTrainer.Query, header: AdminGetTrainer.Header,  },
         logic
       ));
     }
@@ -323,7 +323,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminCreateTrainer.Endpoint.method, 
         AdminCreateTrainer.Endpoint.url, 
-        { body: AdminCreateTrainer.Body,  },
+        { body: AdminCreateTrainer.Body, header: AdminCreateTrainer.Header,  },
         logic
       ));
     }
@@ -335,7 +335,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminUpdateTrainer.Endpoint.method, 
         AdminUpdateTrainer.Endpoint.url, 
-        { body: AdminUpdateTrainer.Body,  },
+        { body: AdminUpdateTrainer.Body, header: AdminUpdateTrainer.Header,  },
         logic
       ));
     }
@@ -347,7 +347,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminDeleteTrainer.Endpoint.method, 
         AdminDeleteTrainer.Endpoint.url, 
-        { query: AdminDeleteTrainer.Query,  },
+        { query: AdminDeleteTrainer.Query, header: AdminDeleteTrainer.Header,  },
         logic
       ));
     }
@@ -359,7 +359,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminGetTraining.Endpoint.method, 
         AdminGetTraining.Endpoint.url, 
-        { query: AdminGetTraining.Query,  },
+        { query: AdminGetTraining.Query, header: AdminGetTraining.Header,  },
         logic
       ));
     }
@@ -371,7 +371,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminCreateTraining.Endpoint.method, 
         AdminCreateTraining.Endpoint.url, 
-        { body: AdminCreateTraining.Body,  },
+        { body: AdminCreateTraining.Body, header: AdminCreateTraining.Header,  },
         logic
       ));
     }
@@ -383,7 +383,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminUpdateTraining.Endpoint.method, 
         AdminUpdateTraining.Endpoint.url, 
-        { body: AdminUpdateTraining.Body,  },
+        { body: AdminUpdateTraining.Body, header: AdminUpdateTraining.Header,  },
         logic
       ));
     }
@@ -395,7 +395,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         AdminDeleteTraining.Endpoint.method, 
         AdminDeleteTraining.Endpoint.url, 
-        { query: AdminDeleteTraining.Query,  },
+        { query: AdminDeleteTraining.Query, header: AdminDeleteTraining.Header,  },
         logic
       ));
     }

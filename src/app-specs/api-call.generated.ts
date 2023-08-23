@@ -129,32 +129,32 @@ export class APICall {
     return (await this.axios_instance?.get<GetCertificateDetail.Output>(GetCertificateDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
-  public async adminGetBankSoal(query: AdminGetBankSoal.Query, ): Promise<AdminGetBankSoal.Output> {
+  public async adminGetBankSoal(query: AdminGetBankSoal.Query, header: AdminGetBankSoal.Header, ): Promise<AdminGetBankSoal.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.get<AdminGetBankSoal.Output>(AdminGetBankSoal.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.get<AdminGetBankSoal.Output>(AdminGetBankSoal.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
-  public async adminCreateBankSoal(body: AdminCreateBankSoal.Body, ): Promise<AdminCreateBankSoal.Output> {
+  public async adminCreateBankSoal(body: AdminCreateBankSoal.Body, header: AdminCreateBankSoal.Header, ): Promise<AdminCreateBankSoal.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.post<AdminCreateBankSoal.Output>(AdminCreateBankSoal.Endpoint.url, body, {  }))!.data;
+    return (await this.axios_instance?.post<AdminCreateBankSoal.Output>(AdminCreateBankSoal.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
-  public async adminUpdateBankSoal(body: AdminUpdateBankSoal.Body, ): Promise<AdminUpdateBankSoal.Output> {
+  public async adminUpdateBankSoal(body: AdminUpdateBankSoal.Body, header: AdminUpdateBankSoal.Header, ): Promise<AdminUpdateBankSoal.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.put<AdminUpdateBankSoal.Output>(AdminUpdateBankSoal.Endpoint.url, body, {  }))!.data;
+    return (await this.axios_instance?.put<AdminUpdateBankSoal.Output>(AdminUpdateBankSoal.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
-  public async adminDeleteBankSoal(query: AdminDeleteBankSoal.Query, ): Promise<AdminDeleteBankSoal.Output> {
+  public async adminDeleteBankSoal(query: AdminDeleteBankSoal.Query, header: AdminDeleteBankSoal.Header, ): Promise<AdminDeleteBankSoal.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.delete<AdminDeleteBankSoal.Output>(AdminDeleteBankSoal.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.delete<AdminDeleteBankSoal.Output>(AdminDeleteBankSoal.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async adminLogin(body: AdminLogin.Body, ): Promise<AdminLogin.Output> {
@@ -164,60 +164,60 @@ export class APICall {
     return (await this.axios_instance?.post<AdminLogin.Output>(AdminLogin.Endpoint.url, body, {  }))!.data;
   }
 
-  public async adminGetTrainer(query: AdminGetTrainer.Query, ): Promise<AdminGetTrainer.Output> {
+  public async adminGetTrainer(query: AdminGetTrainer.Query, header: AdminGetTrainer.Header, ): Promise<AdminGetTrainer.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.get<AdminGetTrainer.Output>(AdminGetTrainer.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.get<AdminGetTrainer.Output>(AdminGetTrainer.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
-  public async adminCreateTrainer(body: AdminCreateTrainer.Body, ): Promise<AdminCreateTrainer.Output> {
+  public async adminCreateTrainer(body: AdminCreateTrainer.Body, header: AdminCreateTrainer.Header, ): Promise<AdminCreateTrainer.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.post<AdminCreateTrainer.Output>(AdminCreateTrainer.Endpoint.url, body, {  }))!.data;
+    return (await this.axios_instance?.post<AdminCreateTrainer.Output>(AdminCreateTrainer.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
-  public async adminUpdateTrainer(body: AdminUpdateTrainer.Body, ): Promise<AdminUpdateTrainer.Output> {
+  public async adminUpdateTrainer(body: AdminUpdateTrainer.Body, header: AdminUpdateTrainer.Header, ): Promise<AdminUpdateTrainer.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.put<AdminUpdateTrainer.Output>(AdminUpdateTrainer.Endpoint.url, body, {  }))!.data;
+    return (await this.axios_instance?.put<AdminUpdateTrainer.Output>(AdminUpdateTrainer.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
-  public async adminDeleteTrainer(query: AdminDeleteTrainer.Query, ): Promise<AdminDeleteTrainer.Output> {
+  public async adminDeleteTrainer(query: AdminDeleteTrainer.Query, header: AdminDeleteTrainer.Header, ): Promise<AdminDeleteTrainer.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.delete<AdminDeleteTrainer.Output>(AdminDeleteTrainer.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.delete<AdminDeleteTrainer.Output>(AdminDeleteTrainer.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
-  public async adminGetTraining(query: AdminGetTraining.Query, ): Promise<AdminGetTraining.Output> {
+  public async adminGetTraining(query: AdminGetTraining.Query, header: AdminGetTraining.Header, ): Promise<AdminGetTraining.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.get<AdminGetTraining.Output>(AdminGetTraining.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.get<AdminGetTraining.Output>(AdminGetTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
-  public async adminCreateTraining(body: AdminCreateTraining.Body, ): Promise<AdminCreateTraining.Output> {
+  public async adminCreateTraining(body: AdminCreateTraining.Body, header: AdminCreateTraining.Header, ): Promise<AdminCreateTraining.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.post<AdminCreateTraining.Output>(AdminCreateTraining.Endpoint.url, body, {  }))!.data;
+    return (await this.axios_instance?.post<AdminCreateTraining.Output>(AdminCreateTraining.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
-  public async adminUpdateTraining(body: AdminUpdateTraining.Body, ): Promise<AdminUpdateTraining.Output> {
+  public async adminUpdateTraining(body: AdminUpdateTraining.Body, header: AdminUpdateTraining.Header, ): Promise<AdminUpdateTraining.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.put<AdminUpdateTraining.Output>(AdminUpdateTraining.Endpoint.url, body, {  }))!.data;
+    return (await this.axios_instance?.put<AdminUpdateTraining.Output>(AdminUpdateTraining.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
-  public async adminDeleteTraining(query: AdminDeleteTraining.Query, ): Promise<AdminDeleteTraining.Output> {
+  public async adminDeleteTraining(query: AdminDeleteTraining.Query, header: AdminDeleteTraining.Header, ): Promise<AdminDeleteTraining.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.delete<AdminDeleteTraining.Output>(AdminDeleteTraining.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.delete<AdminDeleteTraining.Output>(AdminDeleteTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async uploadAssignment(body: UploadAssignment.Body, header: UploadAssignment.Header, ): Promise<UploadAssignment.Output> {

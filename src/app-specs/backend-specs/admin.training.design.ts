@@ -5,6 +5,7 @@ import { Transform, Type } from "class-transformer";
 import { Training } from "../../entity/Training.entity";
 import { TrainingType } from "../../entity/TrainingType.enum";
 import { MaterialQuizType } from "../../entity/MaterialQuizType.enum";
+import { AuthorizedData } from "./authorization.design";
 
 export namespace AdminGetTraining {
   export class Query {
@@ -18,6 +19,8 @@ export namespace AdminGetTraining {
     @IsNumber({}, { message: 'Offset must be a number' })
     offset?: number;
   }
+
+  export class Header extends AuthorizedData {}
 
   export interface Output {
     total: number
@@ -121,6 +124,8 @@ export namespace AdminCreateTraining {
     @Type(() => TrainingSessionBody)
     list_session!: TrainingSessionBody[];
   }
+
+  export class Header extends AuthorizedData {}
 
   export type Output = Training;
 
@@ -242,6 +247,8 @@ export namespace AdminUpdateTraining {
     list_session!: TrainingSessionBody[];
   }
 
+  export class Header extends AuthorizedData {}
+
   export type Output = boolean;
 
   export abstract class Endpoint extends BaseEndpoint<any, Body, any, Output> {
@@ -257,6 +264,8 @@ export namespace AdminDeleteTraining {
     @IsNumber({}, { message: 'Training ID must be a number' })
     id!: number;
   }
+
+  export class Header extends AuthorizedData {}
 
   export type Output = boolean;
 

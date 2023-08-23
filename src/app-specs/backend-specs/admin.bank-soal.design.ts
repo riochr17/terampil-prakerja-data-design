@@ -2,6 +2,7 @@ import { ArrayMinSize, IsArray, IsNotEmpty, IsNumber, IsOptional, IsString, Vali
 import { BaseEndpoint, EndpointMethod, ExpressTransform } from "../base-design";
 import { Transform, Type } from "class-transformer";
 import { Quiz } from "../../entity/Quiz.entity";
+import { AuthorizedData } from "./authorization.design";
 
 export namespace AdminGetBankSoal {
   export class Query {
@@ -15,6 +16,8 @@ export namespace AdminGetBankSoal {
     @IsNumber({}, { message: 'Offset must be a number' })
     offset?: number;
   }
+
+  export class Header extends AuthorizedData {}
 
   export interface Output {
     total: number
@@ -57,6 +60,8 @@ export namespace AdminCreateBankSoal {
     @Type(() => QuizQuestionBody)
     list_question!: QuizQuestionBody[];
   }
+
+  export class Header extends AuthorizedData {}
 
   export type Output = Quiz;
 
@@ -102,6 +107,8 @@ export namespace AdminUpdateBankSoal {
     list_question!: QuizQuestionBody[];
   }
 
+  export class Header extends AuthorizedData {}
+
   export type Output = boolean;
 
   export abstract class Endpoint extends BaseEndpoint<any, Body, any, Output> {
@@ -117,6 +124,8 @@ export namespace AdminDeleteBankSoal {
     @IsNumber({}, { message: 'Quiz ID must be a number' })
     id!: number;
   }
+
+  export class Header extends AuthorizedData {}
 
   export type Output = boolean;
 
