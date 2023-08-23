@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { Register } from "./backend-specs/account-auth.design";
 import { Login } from "./backend-specs/account-auth.design";

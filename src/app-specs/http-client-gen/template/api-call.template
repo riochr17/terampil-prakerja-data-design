@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 {{#each import_dependencies}}{{this}}{{/each}}
 
