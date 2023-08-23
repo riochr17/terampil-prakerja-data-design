@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { QuestionAnswer } from './QuestionAnswer.entity';
 import { UserQuizQuestionAnswer } from './UserQuizQuestionAnswer.entity';
-import { MaterialQuiz } from './MaterialQuiz.entity';
+import { Quiz } from './Quiz.entity';
 
 
 @Entity('QuizQuestion')
@@ -19,9 +19,9 @@ export class QuizQuestion {
   })
   list_user_quiz_question_answer_quiz_question!: UserQuizQuestionAnswer[];
 
-  @ManyToOne(() => MaterialQuiz, material_quiz => material_quiz.id)
-  @JoinColumn({ name: 'material_quiz_id' })
-  material_quiz!: MaterialQuiz;
+  @ManyToOne(() => Quiz, quiz => quiz.id)
+  @JoinColumn({ name: 'quiz_id' })
+  quiz!: Quiz;
 
   @Column({
     type: 'text',

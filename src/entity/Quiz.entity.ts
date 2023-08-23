@@ -1,20 +1,22 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { SessionMaterial } from './SessionMaterial.entity';
-import { Quiz } from './Quiz.entity';
+import { MaterialQuiz } from './MaterialQuiz.entity';
+import { QuizQuestion } from './QuizQuestion.entity';
 import { MaterialQuizType } from './MaterialQuizType.enum';
 
-@Entity('MaterialQuiz')
-export class MaterialQuiz {
+@Entity('Quiz')
+export class Quiz {
   @PrimaryGeneratedColumn('increment')
   id!: number;
 
-  @ManyToOne(() => SessionMaterial, session_material => session_material.id)
-  @JoinColumn({ name: 'session_material_id' })
-  session_material!: SessionMaterial;
+  @OneToMany(() => MaterialQuiz, _ => _.quiz, {
+    cascade: true
+  })
+  list_material_quiz_quiz!: MaterialQuiz[];
 
-  @ManyToOne(() => Quiz, quiz => quiz.id)
-  @JoinColumn({ name: 'quiz_id' })
-  quiz!: Quiz;
+  @OneToMany(() => QuizQuestion, _ => _.quiz, {
+    cascade: true
+  })
+  list_quiz_question_quiz!: QuizQuestion[];
 
   @Column({
     type: 'enum',

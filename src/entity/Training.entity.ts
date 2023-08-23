@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { TrainingSession } from './TrainingSession.entity';
-import { TrainingSchedule } from './TrainingSchedule.entity';
+import { TrainingLocation } from './TrainingLocation.entity';
 import { TrainingLibrary } from './TrainingLibrary.entity';
 import { Trainer } from './Trainer.entity';
 import { TrainingType } from './TrainingType.enum';
@@ -15,10 +15,10 @@ export class Training {
   })
   list_training_session_training!: TrainingSession[];
 
-  @OneToMany(() => TrainingSchedule, _ => _.training, {
+  @OneToMany(() => TrainingLocation, _ => _.training, {
     cascade: true
   })
-  list_training_schedule_training!: TrainingSchedule[];
+  list_training_location_training!: TrainingLocation[];
 
   @OneToMany(() => TrainingLibrary, _ => _.training, {
     cascade: true
