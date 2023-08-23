@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { MaterialQuiz } from './MaterialQuiz.entity';
 import { QuizQuestion } from './QuizQuestion.entity';
-import { MaterialQuizType } from './MaterialQuizType.enum';
+
 
 @Entity('Quiz')
 export class Quiz {
@@ -19,11 +19,17 @@ export class Quiz {
   list_quiz_question_quiz!: QuizQuestion[];
 
   @Column({
-    type: 'enum',
-    enum: MaterialQuizType,
+    type: 'varchar',
+    length: 255,
     array: false
   })
-  type!: MaterialQuizType;
+  label!: string;
+
+  @Column({
+    type: 'text',
+    array: false
+  })
+  description!: string;
 
   @CreateDateColumn()
   created_at!: Date;
