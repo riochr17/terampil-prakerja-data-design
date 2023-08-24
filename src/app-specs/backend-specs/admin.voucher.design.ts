@@ -43,7 +43,7 @@ export namespace AdminCreateVoucher {
     @Transform(ExpressTransform.integer)
     @IsOptional()
     @IsNumber({}, { message: 'Quota must be a number' })
-    quota!: string;
+    quota!: number;
   }
 
   export class Header extends AuthorizedData {}
@@ -74,7 +74,7 @@ export namespace AdminUpdateVoucher {
     @Transform(ExpressTransform.integer)
     @IsOptional()
     @IsNumber({}, { message: 'Quota must be a number' })
-    quota!: string;
+    quota!: number;
   }
 
   export class Header extends AuthorizedData {}
