@@ -6,6 +6,7 @@ import { Training } from "../../entity/Training.entity";
 import { TrainingType } from "../../entity/TrainingType.enum";
 import { MaterialQuizType } from "../../entity/MaterialQuizType.enum";
 import { AuthorizedData } from "./authorization.design";
+import { SessionMaterialType } from "../../entity/SessionMaterialType.enum";
 
 export namespace AdminGetTraining {
   export class Query {
@@ -63,14 +64,10 @@ export namespace AdminCreateTraining {
     list_quiz_id!: number[];
   }
 
-  export class TrainingSessionBody {
-    @IsNotEmpty({ message: 'Title cannot be empty' })
-    @IsString({ message: 'Title must be a string' })
-    title!: string;
-
-    @IsOptional()
-    @IsString({ message: 'Description must be a string' })
-    description?: string;
+  export class TrainingSessionMaterial {
+    @IsNotEmpty({ message: 'Type cannot be empty' })
+    @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
+    type!: SessionMaterialType;
 
     @IsOptional()
     @IsObject()
@@ -95,6 +92,21 @@ export namespace AdminCreateTraining {
     @ValidateNested()
     @Type(() => TrainignSessionMaterialOfflineClass)
     material_offline_class?: TrainignSessionMaterialOfflineClass;
+  }
+
+  export class TrainingSessionBody {
+    @IsNotEmpty({ message: 'Title cannot be empty' })
+    @IsString({ message: 'Title must be a string' })
+    title!: string;
+
+    @IsOptional()
+    @IsString({ message: 'Description must be a string' })
+    description?: string;
+
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => TrainingSessionMaterial)
+    list_material!: TrainingSessionMaterial[];
   }
 
   export class Body {
@@ -165,14 +177,10 @@ export namespace AdminUpdateTraining {
     list_quiz_id!: number[];
   }
 
-  export class TrainingSessionBody {
-    @IsNotEmpty({ message: 'Title cannot be empty' })
-    @IsString({ message: 'Title must be a string' })
-    title!: string;
-
-    @IsOptional()
-    @IsString({ message: 'Description must be a string' })
-    description?: string;
+  export class TrainingSessionMaterial {
+    @IsNotEmpty({ message: 'Type cannot be empty' })
+    @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
+    type!: SessionMaterialType;
 
     @IsOptional()
     @IsObject()
@@ -197,6 +205,21 @@ export namespace AdminUpdateTraining {
     @ValidateNested()
     @Type(() => TrainignSessionMaterialOfflineClass)
     material_offline_class?: TrainignSessionMaterialOfflineClass;
+  }
+
+  export class TrainingSessionBody {
+    @IsNotEmpty({ message: 'Title cannot be empty' })
+    @IsString({ message: 'Title must be a string' })
+    title!: string;
+
+    @IsOptional()
+    @IsString({ message: 'Description must be a string' })
+    description?: string;
+
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => TrainingSessionMaterial)
+    list_material!: TrainingSessionMaterial[];
   }
 
   export class TrainingQuestionBody {
