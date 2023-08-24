@@ -41,7 +41,7 @@ export namespace AdminCreateVoucher {
     description?: string;
 
     @Transform(ExpressTransform.integer)
-    @IsOptional()
+    @IsNotEmpty({ message: 'Quota cannot be empty' })
     @IsNumber({}, { message: 'Quota must be a number' })
     quota!: number;
   }
@@ -72,7 +72,7 @@ export namespace AdminUpdateVoucher {
     description?: string;
 
     @Transform(ExpressTransform.integer)
-    @IsOptional()
+    @IsNotEmpty({ message: 'Quota cannot be empty' })
     @IsNumber({}, { message: 'Quota must be a number' })
     quota!: number;
   }
