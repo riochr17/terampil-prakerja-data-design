@@ -149,24 +149,44 @@ export namespace AdminCreateTraining {
 
 export namespace AdminUpdateTraining {
   export class TrainignSessionMaterialOfflineClass {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Location cannot be empty' })
     @IsString({ message: 'Location must be a string' })
     location!: string;
   }
 
   export class TrainignSessionMaterialOnlineClass {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Meeting URL cannot be empty' })
     @IsString({ message: 'Meeting URL must be a string' })
     meeting_url!: string;
   }
 
   export class TrainignSessionMaterialAssignment {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Deadline cannot be empty' })
     @IsString({ message: 'Deadline must be a string' })
     deadline!: string;
   }
 
   export class TrainingSessionMaterialQuiz {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Material Quiz Type cannot be empty' })
     @IsEnum(MaterialQuizType, { message: 'Material Quiz Type must be an enum' })
     type!: MaterialQuizType;
@@ -178,6 +198,11 @@ export namespace AdminUpdateTraining {
   }
 
   export class TrainingSessionMaterial {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Type cannot be empty' })
     @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
     type!: SessionMaterialType;
@@ -208,6 +233,11 @@ export namespace AdminUpdateTraining {
   }
 
   export class TrainingSessionBody {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Title cannot be empty' })
     @IsString({ message: 'Title must be a string' })
     title!: string;
@@ -220,21 +250,6 @@ export namespace AdminUpdateTraining {
     @ValidateNested({ each: true })
     @Type(() => TrainingSessionMaterial)
     list_material!: TrainingSessionMaterial[];
-  }
-
-  export class TrainingQuestionBody {
-    @IsNotEmpty({ message: 'Question cannot be empty' })
-    @IsString({ message: 'Question must be a string' })
-    question!: string;
-
-    @IsNotEmpty({ message: 'Answer cannot be empty' })
-    @IsString({ message: 'Answer must be a string' })
-    answer!: string;
-
-    @IsArray({ message: 'List answer must be an array' })
-    @IsString({ each: true })
-    @ArrayMinSize(2, { message: 'List answer need at least two answers' })
-    list_answer!: string[];
   }
 
   export class Body {
