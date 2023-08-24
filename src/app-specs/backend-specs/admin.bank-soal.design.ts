@@ -15,6 +15,10 @@ export namespace AdminGetBankSoal {
     @IsOptional()
     @IsNumber({}, { message: 'Offset must be a number' })
     offset?: number;
+
+    @IsOptional()
+    @IsNumber({}, { each: true, message: 'Offset must be a number' })
+    list_id?: number[];
   }
 
   export class Header extends AuthorizedData {}
