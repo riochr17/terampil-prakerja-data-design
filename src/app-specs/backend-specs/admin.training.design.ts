@@ -74,6 +74,10 @@ export namespace AdminCreateTraining {
     title!: string;
 
     @IsOptional()
+    @IsString({ message: 'Description must be a string' })
+    description?: string;
+
+    @IsOptional()
     @IsObject()
     @ValidateNested()
     @Type(() => TrainingSessionMaterialQuiz)
@@ -214,6 +218,10 @@ export namespace AdminUpdateTraining {
     @IsNotEmpty({ message: 'Title cannot be empty' })
     @IsString({ message: 'Title must be a string' })
     title!: string;
+
+    @IsOptional()
+    @IsString({ message: 'Description must be a string' })
+    description?: string;
 
     @IsOptional()
     @IsObject()
