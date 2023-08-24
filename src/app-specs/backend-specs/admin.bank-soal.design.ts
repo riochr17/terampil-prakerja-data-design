@@ -73,6 +73,11 @@ export namespace AdminCreateBankSoal {
 
 export namespace AdminUpdateBankSoal {
   export class QuizQuestionBody {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Quiz Question ID must be a number' })
+    id?: number;
+
     @IsNotEmpty({ message: 'Question cannot be empty' })
     @IsString({ message: 'Question must be a string' })
     question!: string;
