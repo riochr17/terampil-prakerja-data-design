@@ -127,12 +127,12 @@ export namespace AdminCreateTrainingLocationSchedule {
     @Transform(ExpressTransform.date)
     @IsNotEmpty({ message: 'Schedule start time cannot be empty' })
     @IsDate({ message: 'Schedule start time must be a Date' })
-    begin!: string;
+    begin!: Date;
 
     @Transform(ExpressTransform.date)
     @IsNotEmpty({ message: 'Schedule end time cannot be empty' })
     @IsDate({ message: 'Schedule end time must be a Date' })
-    end!: string;
+    end!: Date;
   }
 
   export class Body {
@@ -176,12 +176,12 @@ export namespace AdminUpdateTrainingLocationSchedule {
     @Transform(ExpressTransform.date)
     @IsNotEmpty({ message: 'Schedule start time cannot be empty' })
     @IsDate({ message: 'Schedule start time must be a Date' })
-    begin!: string;
+    begin!: Date;
 
     @Transform(ExpressTransform.date)
     @IsNotEmpty({ message: 'Schedule end time cannot be empty' })
     @IsDate({ message: 'Schedule end time must be a Date' })
-    end!: string;
+    end!: Date;
   }
 
   export class Body {
