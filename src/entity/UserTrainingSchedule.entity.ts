@@ -52,6 +52,13 @@ export class UserTrainingSchedule {
   @JoinColumn({ name: 'training_schedule_id' })
   training_schedule!: TrainingSchedule;
 
+  @Column({
+    type: 'varchar',
+    length: 255,
+    array: false
+  })
+  redeem_voucher_code!: string;
+
   @CreateDateColumn()
   created_at!: Date;
 

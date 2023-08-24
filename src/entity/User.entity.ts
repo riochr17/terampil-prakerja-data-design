@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { UserTrainingSchedule } from './UserTrainingSchedule.entity';
+import { VoucherUser } from './VoucherUser.entity';
 import { UserGender } from './UserGender.enum';
 
 @Entity('User')
@@ -11,6 +12,11 @@ export class User {
     cascade: true
   })
   list_user_training_schedule_user!: UserTrainingSchedule[];
+
+  @OneToMany(() => VoucherUser, _ => _.user, {
+    cascade: true
+  })
+  list_voucher_user_user!: VoucherUser[];
 
   @Column({
     type: 'varchar',
