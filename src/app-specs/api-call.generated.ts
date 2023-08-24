@@ -18,6 +18,13 @@ import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminUpdateTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminDeleteTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminDetailTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminGetTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminDeleteTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminCreateTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminUpdateTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminDeleteTrainingLocationSchedule } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminCreateTrainingLocationSchedule } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminUpdateTrainingLocationSchedule } from "./backend-specs/admin.training-location-schedule.design";
 import { AdminGetTraining } from "./backend-specs/admin.training.design";
 import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
@@ -208,6 +215,55 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<AdminDetailTrainer.Output>(AdminDetailTrainer.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminGetTrainingLocation(query: AdminGetTrainingLocation.Query, header: AdminGetTrainingLocation.Header, ): Promise<AdminGetTrainingLocation.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetTrainingLocation.Output>(AdminGetTrainingLocation.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDeleteTrainingLocation(query: AdminDeleteTrainingLocation.Query, header: AdminDeleteTrainingLocation.Header, ): Promise<AdminDeleteTrainingLocation.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteTrainingLocation.Output>(AdminDeleteTrainingLocation.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminCreateTrainingLocation(body: AdminCreateTrainingLocation.Body, header: AdminCreateTrainingLocation.Header, ): Promise<AdminCreateTrainingLocation.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateTrainingLocation.Output>(AdminCreateTrainingLocation.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminUpdateTrainingLocation(body: AdminUpdateTrainingLocation.Body, header: AdminUpdateTrainingLocation.Header, ): Promise<AdminUpdateTrainingLocation.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateTrainingLocation.Output>(AdminUpdateTrainingLocation.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminDeleteTrainingLocationSchedule(query: AdminDeleteTrainingLocationSchedule.Query, header: AdminDeleteTrainingLocationSchedule.Header, ): Promise<AdminDeleteTrainingLocationSchedule.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteTrainingLocationSchedule.Output>(AdminDeleteTrainingLocationSchedule.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminCreateTrainingLocationSchedule(body: AdminCreateTrainingLocationSchedule.Body, header: AdminCreateTrainingLocationSchedule.Header, ): Promise<AdminCreateTrainingLocationSchedule.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateTrainingLocationSchedule.Output>(AdminCreateTrainingLocationSchedule.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminUpdateTrainingLocationSchedule(body: AdminUpdateTrainingLocationSchedule.Body, header: AdminUpdateTrainingLocationSchedule.Header, ): Promise<AdminUpdateTrainingLocationSchedule.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateTrainingLocationSchedule.Output>(AdminUpdateTrainingLocationSchedule.Endpoint.url, body, { headers: header as any,  }))!.data;
   }
 
   public async adminGetTraining(query: AdminGetTraining.Query, header: AdminGetTraining.Header, ): Promise<AdminGetTraining.Output> {

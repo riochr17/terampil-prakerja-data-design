@@ -18,6 +18,13 @@ import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminUpdateTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminDeleteTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminDetailTrainer } from "./backend-specs/admin.trainer.design";
+import { AdminGetTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminDeleteTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminCreateTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminUpdateTrainingLocation } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminDeleteTrainingLocationSchedule } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminCreateTrainingLocationSchedule } from "./backend-specs/admin.training-location-schedule.design";
+import { AdminUpdateTrainingLocationSchedule } from "./backend-specs/admin.training-location-schedule.design";
 import { AdminGetTraining } from "./backend-specs/admin.training.design";
 import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
@@ -60,6 +67,13 @@ export namespace BackendSystem {
     export type IAdminUpdateTrainer = (param: { body: AdminUpdateTrainer.Body, header: AdminUpdateTrainer.Header,  }) => Promise<AdminUpdateTrainer.Output>
     export type IAdminDeleteTrainer = (param: { query: AdminDeleteTrainer.Query, header: AdminDeleteTrainer.Header,  }) => Promise<AdminDeleteTrainer.Output>
     export type IAdminDetailTrainer = (param: { query: AdminDetailTrainer.Query, header: AdminDetailTrainer.Header,  }) => Promise<AdminDetailTrainer.Output>
+    export type IAdminGetTrainingLocation = (param: { query: AdminGetTrainingLocation.Query, header: AdminGetTrainingLocation.Header,  }) => Promise<AdminGetTrainingLocation.Output>
+    export type IAdminDeleteTrainingLocation = (param: { query: AdminDeleteTrainingLocation.Query, header: AdminDeleteTrainingLocation.Header,  }) => Promise<AdminDeleteTrainingLocation.Output>
+    export type IAdminCreateTrainingLocation = (param: { body: AdminCreateTrainingLocation.Body, header: AdminCreateTrainingLocation.Header,  }) => Promise<AdminCreateTrainingLocation.Output>
+    export type IAdminUpdateTrainingLocation = (param: { body: AdminUpdateTrainingLocation.Body, header: AdminUpdateTrainingLocation.Header,  }) => Promise<AdminUpdateTrainingLocation.Output>
+    export type IAdminDeleteTrainingLocationSchedule = (param: { query: AdminDeleteTrainingLocationSchedule.Query, header: AdminDeleteTrainingLocationSchedule.Header,  }) => Promise<AdminDeleteTrainingLocationSchedule.Output>
+    export type IAdminCreateTrainingLocationSchedule = (param: { body: AdminCreateTrainingLocationSchedule.Body, header: AdminCreateTrainingLocationSchedule.Header,  }) => Promise<AdminCreateTrainingLocationSchedule.Output>
+    export type IAdminUpdateTrainingLocationSchedule = (param: { body: AdminUpdateTrainingLocationSchedule.Body, header: AdminUpdateTrainingLocationSchedule.Header,  }) => Promise<AdminUpdateTrainingLocationSchedule.Output>
     export type IAdminGetTraining = (param: { query: AdminGetTraining.Query, header: AdminGetTraining.Header,  }) => Promise<AdminGetTraining.Output>
     export type IAdminCreateTraining = (param: { body: AdminCreateTraining.Body, header: AdminCreateTraining.Header,  }) => Promise<AdminCreateTraining.Output>
     export type IAdminUpdateTraining = (param: { body: AdminUpdateTraining.Body, header: AdminUpdateTraining.Header,  }) => Promise<AdminUpdateTraining.Output>
@@ -377,6 +391,90 @@ export namespace BackendSystem {
         AdminDetailTrainer.Endpoint.method, 
         AdminDetailTrainer.Endpoint.url, 
         { query: AdminDetailTrainer.Query, header: AdminDetailTrainer.Header,  },
+        logic
+      ));
+    }
+
+    public adminGetTrainingLocation(logic: Logic.IAdminGetTrainingLocation) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetTrainingLocation.Endpoint.method, 
+        AdminGetTrainingLocation.Endpoint.url, 
+        { query: AdminGetTrainingLocation.Query, header: AdminGetTrainingLocation.Header,  },
+        logic
+      ));
+    }
+
+    public adminDeleteTrainingLocation(logic: Logic.IAdminDeleteTrainingLocation) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteTrainingLocation.Endpoint.method, 
+        AdminDeleteTrainingLocation.Endpoint.url, 
+        { query: AdminDeleteTrainingLocation.Query, header: AdminDeleteTrainingLocation.Header,  },
+        logic
+      ));
+    }
+
+    public adminCreateTrainingLocation(logic: Logic.IAdminCreateTrainingLocation) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateTrainingLocation.Endpoint.method, 
+        AdminCreateTrainingLocation.Endpoint.url, 
+        { body: AdminCreateTrainingLocation.Body, header: AdminCreateTrainingLocation.Header,  },
+        logic
+      ));
+    }
+
+    public adminUpdateTrainingLocation(logic: Logic.IAdminUpdateTrainingLocation) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateTrainingLocation.Endpoint.method, 
+        AdminUpdateTrainingLocation.Endpoint.url, 
+        { body: AdminUpdateTrainingLocation.Body, header: AdminUpdateTrainingLocation.Header,  },
+        logic
+      ));
+    }
+
+    public adminDeleteTrainingLocationSchedule(logic: Logic.IAdminDeleteTrainingLocationSchedule) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteTrainingLocationSchedule.Endpoint.method, 
+        AdminDeleteTrainingLocationSchedule.Endpoint.url, 
+        { query: AdminDeleteTrainingLocationSchedule.Query, header: AdminDeleteTrainingLocationSchedule.Header,  },
+        logic
+      ));
+    }
+
+    public adminCreateTrainingLocationSchedule(logic: Logic.IAdminCreateTrainingLocationSchedule) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateTrainingLocationSchedule.Endpoint.method, 
+        AdminCreateTrainingLocationSchedule.Endpoint.url, 
+        { body: AdminCreateTrainingLocationSchedule.Body, header: AdminCreateTrainingLocationSchedule.Header,  },
+        logic
+      ));
+    }
+
+    public adminUpdateTrainingLocationSchedule(logic: Logic.IAdminUpdateTrainingLocationSchedule) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateTrainingLocationSchedule.Endpoint.method, 
+        AdminUpdateTrainingLocationSchedule.Endpoint.url, 
+        { body: AdminUpdateTrainingLocationSchedule.Body, header: AdminUpdateTrainingLocationSchedule.Header,  },
         logic
       ));
     }
