@@ -30,6 +30,11 @@ import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
 import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
 import { AdminDetailTraining } from "./backend-specs/admin.training.design";
+import { AdminGetVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminCreateVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminUpdateVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminDeleteVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminDetailVoucher } from "./backend-specs/admin.voucher.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -299,6 +304,41 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<AdminDetailTraining.Output>(AdminDetailTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminGetVoucher(query: AdminGetVoucher.Query, header: AdminGetVoucher.Header, ): Promise<AdminGetVoucher.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetVoucher.Output>(AdminGetVoucher.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminCreateVoucher(body: AdminCreateVoucher.Body, header: AdminCreateVoucher.Header, ): Promise<AdminCreateVoucher.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateVoucher.Output>(AdminCreateVoucher.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminUpdateVoucher(body: AdminUpdateVoucher.Body, header: AdminUpdateVoucher.Header, ): Promise<AdminUpdateVoucher.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateVoucher.Output>(AdminUpdateVoucher.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminDeleteVoucher(query: AdminDeleteVoucher.Query, header: AdminDeleteVoucher.Header, ): Promise<AdminDeleteVoucher.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteVoucher.Output>(AdminDeleteVoucher.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDetailVoucher(query: AdminDetailVoucher.Query, header: AdminDetailVoucher.Header, ): Promise<AdminDetailVoucher.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailVoucher.Output>(AdminDetailVoucher.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async uploadAssignment(body: UploadAssignment.Body, header: UploadAssignment.Header, ): Promise<UploadAssignment.Output> {

@@ -30,6 +30,11 @@ import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
 import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
 import { AdminDetailTraining } from "./backend-specs/admin.training.design";
+import { AdminGetVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminCreateVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminUpdateVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminDeleteVoucher } from "./backend-specs/admin.voucher.design";
+import { AdminDetailVoucher } from "./backend-specs/admin.voucher.design";
 import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
@@ -79,6 +84,11 @@ export namespace BackendSystem {
     export type IAdminUpdateTraining = (param: { body: AdminUpdateTraining.Body, header: AdminUpdateTraining.Header,  }) => Promise<AdminUpdateTraining.Output>
     export type IAdminDeleteTraining = (param: { query: AdminDeleteTraining.Query, header: AdminDeleteTraining.Header,  }) => Promise<AdminDeleteTraining.Output>
     export type IAdminDetailTraining = (param: { query: AdminDetailTraining.Query, header: AdminDetailTraining.Header,  }) => Promise<AdminDetailTraining.Output>
+    export type IAdminGetVoucher = (param: { query: AdminGetVoucher.Query, header: AdminGetVoucher.Header,  }) => Promise<AdminGetVoucher.Output>
+    export type IAdminCreateVoucher = (param: { body: AdminCreateVoucher.Body, header: AdminCreateVoucher.Header,  }) => Promise<AdminCreateVoucher.Output>
+    export type IAdminUpdateVoucher = (param: { body: AdminUpdateVoucher.Body, header: AdminUpdateVoucher.Header,  }) => Promise<AdminUpdateVoucher.Output>
+    export type IAdminDeleteVoucher = (param: { query: AdminDeleteVoucher.Query, header: AdminDeleteVoucher.Header,  }) => Promise<AdminDeleteVoucher.Output>
+    export type IAdminDetailVoucher = (param: { query: AdminDetailVoucher.Query, header: AdminDetailVoucher.Header,  }) => Promise<AdminDetailVoucher.Output>
     export type IUploadAssignment = (param: { body: UploadAssignment.Body, header: UploadAssignment.Header,  }) => Promise<UploadAssignment.Output>
     export type ICheckInOutMaterialOfflineClass = (param: { body: CheckInOutMaterialOfflineClass.Body, header: CheckInOutMaterialOfflineClass.Header,  }) => Promise<CheckInOutMaterialOfflineClass.Output>
     export type ICheckInOutMaterialOnlineClass = (param: { body: CheckInOutMaterialOnlineClass.Body, header: CheckInOutMaterialOnlineClass.Header,  }) => Promise<CheckInOutMaterialOnlineClass.Output>
@@ -535,6 +545,66 @@ export namespace BackendSystem {
         AdminDetailTraining.Endpoint.method, 
         AdminDetailTraining.Endpoint.url, 
         { query: AdminDetailTraining.Query, header: AdminDetailTraining.Header,  },
+        logic
+      ));
+    }
+
+    public adminGetVoucher(logic: Logic.IAdminGetVoucher) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetVoucher.Endpoint.method, 
+        AdminGetVoucher.Endpoint.url, 
+        { query: AdminGetVoucher.Query, header: AdminGetVoucher.Header,  },
+        logic
+      ));
+    }
+
+    public adminCreateVoucher(logic: Logic.IAdminCreateVoucher) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateVoucher.Endpoint.method, 
+        AdminCreateVoucher.Endpoint.url, 
+        { body: AdminCreateVoucher.Body, header: AdminCreateVoucher.Header,  },
+        logic
+      ));
+    }
+
+    public adminUpdateVoucher(logic: Logic.IAdminUpdateVoucher) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateVoucher.Endpoint.method, 
+        AdminUpdateVoucher.Endpoint.url, 
+        { body: AdminUpdateVoucher.Body, header: AdminUpdateVoucher.Header,  },
+        logic
+      ));
+    }
+
+    public adminDeleteVoucher(logic: Logic.IAdminDeleteVoucher) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteVoucher.Endpoint.method, 
+        AdminDeleteVoucher.Endpoint.url, 
+        { query: AdminDeleteVoucher.Query, header: AdminDeleteVoucher.Header,  },
+        logic
+      ));
+    }
+
+    public adminDetailVoucher(logic: Logic.IAdminDetailVoucher) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDetailVoucher.Endpoint.method, 
+        AdminDetailVoucher.Endpoint.url, 
+        { query: AdminDetailVoucher.Query, header: AdminDetailVoucher.Header,  },
         logic
       ));
     }
