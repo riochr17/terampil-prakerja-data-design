@@ -69,6 +69,10 @@ export namespace AdminCreateTraining {
     @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
     type!: SessionMaterialType;
 
+    @IsNotEmpty({ message: 'Title cannot be empty' })
+    @IsString({ message: 'Title must be a string' })
+    title!: string;
+
     @IsOptional()
     @IsObject()
     @ValidateNested()
@@ -206,6 +210,10 @@ export namespace AdminUpdateTraining {
     @IsNotEmpty({ message: 'Type cannot be empty' })
     @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
     type!: SessionMaterialType;
+
+    @IsNotEmpty({ message: 'Title cannot be empty' })
+    @IsString({ message: 'Title must be a string' })
+    title!: string;
 
     @IsOptional()
     @IsObject()
