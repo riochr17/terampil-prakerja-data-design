@@ -145,7 +145,7 @@ export namespace AdminDetailBankSoal {
 
   export class Header extends AuthorizedData {}
 
-  export type Output = boolean;
+  export type Output = Quiz;
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
