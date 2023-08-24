@@ -133,6 +133,11 @@ export namespace AdminCreateTrainingLocationSchedule {
     @IsNotEmpty({ message: 'Schedule end time cannot be empty' })
     @IsDate({ message: 'Schedule end time must be a Date' })
     end!: Date;
+    
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training Session ID cannot be empty' })
+    @IsNumber({}, { message: 'Training Session ID must be a number' })
+    session_id!: number;
   }
 
   export class Body {
