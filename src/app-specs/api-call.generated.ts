@@ -39,6 +39,7 @@ import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
 import { SubmitQuizAnswer } from "./backend-specs/material-quiz.design";
+import { GetTrainingDetail } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
@@ -367,6 +368,13 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.post<SubmitQuizAnswer.Output>(SubmitQuizAnswer.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async getTrainingDetail(query: GetTrainingDetail.Query, header: GetTrainingDetail.Header, ): Promise<GetTrainingDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetTrainingDetail.Output>(GetTrainingDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async getTraining(query: GetTraining.Query, ): Promise<GetTraining.Output> {
