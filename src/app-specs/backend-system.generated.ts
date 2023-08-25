@@ -39,7 +39,7 @@ import { UploadAssignment } from "./backend-specs/material-assignment.design";
 import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline-class.design";
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
 import { SubmitQuizAnswer } from "./backend-specs/material-quiz.design";
-import { GetTrainingDetail } from "./backend-specs/my-training.design";
+import { GetMyTrainingEnrollStatus } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
@@ -94,7 +94,7 @@ export namespace BackendSystem {
     export type ICheckInOutMaterialOfflineClass = (param: { body: CheckInOutMaterialOfflineClass.Body, header: CheckInOutMaterialOfflineClass.Header,  }) => Promise<CheckInOutMaterialOfflineClass.Output>
     export type ICheckInOutMaterialOnlineClass = (param: { body: CheckInOutMaterialOnlineClass.Body, header: CheckInOutMaterialOnlineClass.Header,  }) => Promise<CheckInOutMaterialOnlineClass.Output>
     export type ISubmitQuizAnswer = (param: { body: SubmitQuizAnswer.Body, header: SubmitQuizAnswer.Header,  }) => Promise<SubmitQuizAnswer.Output>
-    export type IGetTrainingDetail = (param: { query: GetTrainingDetail.Query, header: GetTrainingDetail.Header,  }) => Promise<GetTrainingDetail.Output>
+    export type IGetMyTrainingEnrollStatus = (param: { query: GetMyTrainingEnrollStatus.Query, header: GetMyTrainingEnrollStatus.Header,  }) => Promise<GetMyTrainingEnrollStatus.Output>
     export type IGetTraining = (param: { query: GetTraining.Query,  }) => Promise<GetTraining.Output>
     export type IGetTrainingDetail = (param: { query: GetTrainingDetail.Query,  }) => Promise<GetTrainingDetail.Output>
     export type IGetTrainer = (param: { query: GetTrainer.Query,  }) => Promise<GetTrainer.Output>
@@ -659,14 +659,14 @@ export namespace BackendSystem {
       ));
     }
 
-    public getTrainingDetail(logic: Logic.IGetTrainingDetail) {
+    public getMyTrainingEnrollStatus(logic: Logic.IGetMyTrainingEnrollStatus) {
       if (!this.express) {
         throw new Error(`System have not initialized yet`);
       }
       this.express.use(this.createRoute(
-        GetTrainingDetail.Endpoint.method, 
-        GetTrainingDetail.Endpoint.url, 
-        { query: GetTrainingDetail.Query, header: GetTrainingDetail.Header,  },
+        GetMyTrainingEnrollStatus.Endpoint.method, 
+        GetMyTrainingEnrollStatus.Endpoint.url, 
+        { query: GetMyTrainingEnrollStatus.Query, header: GetMyTrainingEnrollStatus.Header,  },
         logic
       ));
     }

@@ -4,7 +4,7 @@ import { IsNotEmpty, IsNumber } from "class-validator";
 import { AuthorizedData } from "./authorization.design";
 import { UserTrainingSchedule } from "../../entity/UserTrainingSchedule.entity";
 
-export namespace GetTrainingDetail {
+export namespace GetMyTrainingEnrollStatus {
   export class Query {
     @Transform(ExpressTransform.integer)
     @IsNotEmpty({ message: 'Training id cannot be empty' })
