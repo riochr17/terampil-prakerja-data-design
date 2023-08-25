@@ -54,10 +54,6 @@ export namespace AdminCreateTraining {
   }
 
   export class TrainingSessionMaterialQuiz {
-    @IsNotEmpty({ message: 'Material Quiz Type cannot be empty' })
-    @IsEnum(MaterialQuizType, { message: 'Material Quiz Type must be an enum' })
-    type!: MaterialQuizType;
-
     @IsNotEmpty({ message: 'List Quiz ID cannot be empty' })
     @IsNumber({}, { each: true })
     @ArrayMinSize(1, { message: 'List Quiz ID need at least one quiz' })
@@ -194,10 +190,6 @@ export namespace AdminUpdateTraining {
     @IsOptional()
     @IsNumber({}, { message: 'Training ID must be a number' })
     id?: number;
-
-    @IsNotEmpty({ message: 'Material Quiz Type cannot be empty' })
-    @IsEnum(MaterialQuizType, { message: 'Material Quiz Type must be an enum' })
-    type!: MaterialQuizType;
 
     @IsNotEmpty({ message: 'List Quiz ID cannot be empty' })
     @IsNumber({}, { each: true })
