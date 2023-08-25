@@ -40,6 +40,8 @@ import { CheckInOutMaterialOfflineClass } from "./backend-specs/material-offline
 import { CheckInOutMaterialOnlineClass } from "./backend-specs/material-online-class.design";
 import { SubmitQuizAnswer } from "./backend-specs/material-quiz.design";
 import { GetMyTrainingEnrollStatus } from "./backend-specs/my-training.design";
+import { EnrollTraining } from "./backend-specs/my-training.design";
+import { GetMyTraining } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
@@ -375,6 +377,20 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<GetMyTrainingEnrollStatus.Output>(GetMyTrainingEnrollStatus.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async enrollTraining(body: EnrollTraining.Body, header: EnrollTraining.Header, ): Promise<EnrollTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<EnrollTraining.Output>(EnrollTraining.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async getMyTraining(query: GetMyTraining.Query, header: GetMyTraining.Header, ): Promise<GetMyTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyTraining.Output>(GetMyTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async getTraining(query: GetTraining.Query, ): Promise<GetTraining.Output> {
