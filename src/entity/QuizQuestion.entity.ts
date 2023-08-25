@@ -25,14 +25,16 @@ export class QuizQuestion {
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: false
   })
   question!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   answer!: string;
 

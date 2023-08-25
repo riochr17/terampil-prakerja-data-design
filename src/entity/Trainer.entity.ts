@@ -15,34 +15,39 @@ export class Trainer {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   name!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: true
   })
-  profile_picture_url!: string;
+  profile_picture_url?: string;
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: true
   })
-  description!: string;
+  description?: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   occupation!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   signature_image_url!: string;
 

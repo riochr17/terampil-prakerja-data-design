@@ -19,7 +19,8 @@ export class UserQuizQuestionAnswer {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   answer!: string;
 

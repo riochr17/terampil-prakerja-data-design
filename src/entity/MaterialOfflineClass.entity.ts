@@ -19,7 +19,8 @@ export class MaterialOfflineClass {
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: false
   })
   location!: string;
 

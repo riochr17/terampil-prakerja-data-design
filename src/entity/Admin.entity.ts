@@ -10,30 +10,34 @@ export class Admin {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   email!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   password!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   fullname!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: true
   })
-  profile_picture_url!: string;
+  profile_picture_url?: string;
 
   @CreateDateColumn()
   created_at!: Date;

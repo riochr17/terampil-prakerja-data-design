@@ -15,15 +15,17 @@ export class Library {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   title!: string;
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: true
   })
-  description!: string;
+  description?: string;
 
   @Column({
     type: 'enum',
@@ -34,7 +36,8 @@ export class Library {
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: false
   })
   content_url!: string;
 

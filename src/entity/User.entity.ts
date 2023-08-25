@@ -27,35 +27,40 @@ export class User {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   fullname!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: true
   })
-  profile_picture_url!: string;
+  profile_picture_url?: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   email!: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: true
   })
-  phone_number!: string;
+  phone_number?: string;
 
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   password!: string;
 
@@ -68,7 +73,8 @@ export class User {
 
   @Column({
     type: 'boolean',
-    array: false
+    array: false,
+    nullable: false
   })
   active!: boolean;
 

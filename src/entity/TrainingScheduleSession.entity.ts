@@ -18,13 +18,15 @@ export class TrainingScheduleSession {
 
   @Column({
     type: 'timestamp',
-    array: false
+    array: false,
+    nullable: false
   })
   begin!: Date;
 
   @Column({
     type: 'timestamp',
-    array: false
+    array: false,
+    nullable: false
   })
   end!: Date;
 

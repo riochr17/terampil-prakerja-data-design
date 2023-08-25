@@ -55,7 +55,8 @@ export class UserTrainingSchedule {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   redeem_voucher_code!: string;
 

@@ -1,11 +1,15 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Training } from './Training.entity';
 
 
-
-@Entity('Setting')
-export class Setting {
+@Entity('TrainingCompetency')
+export class TrainingCompetency {
   @PrimaryGeneratedColumn('increment')
   id!: number;
+
+  @ManyToOne(() => Training, training => training.id)
+  @JoinColumn({ name: 'training_id' })
+  training!: Training;
 
   @Column({
     type: 'varchar',
@@ -13,14 +17,7 @@ export class Setting {
     array: false,
     nullable: false
   })
-  key!: string;
-
-  @Column({
-    type: 'text',
-    array: false,
-    nullable: false
-  })
-  value!: string;
+  label!: string;
 
   @CreateDateColumn()
   created_at!: Date;

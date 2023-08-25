@@ -20,7 +20,8 @@ export class MaterialOnlineClass {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   meeting_url!: string;
 

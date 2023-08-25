@@ -18,7 +18,8 @@ export class TrainingRating {
 
   @Column({
     type: 'int',
-    array: false
+    array: false,
+    nullable: false
   })
   rating!: number;
 

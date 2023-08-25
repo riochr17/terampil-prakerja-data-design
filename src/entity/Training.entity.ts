@@ -3,6 +3,7 @@ import { TrainingRating } from './TrainingRating.entity';
 import { TrainingSession } from './TrainingSession.entity';
 import { TrainingLocation } from './TrainingLocation.entity';
 import { TrainingLibrary } from './TrainingLibrary.entity';
+import { TrainingCompetency } from './TrainingCompetency.entity';
 import { Trainer } from './Trainer.entity';
 import { TrainingType } from './TrainingType.enum';
 
@@ -31,6 +32,11 @@ export class Training {
   })
   list_training_library_training!: TrainingLibrary[];
 
+  @OneToMany(() => TrainingCompetency, _ => _.training, {
+    cascade: true
+  })
+  list_training_competency_training!: TrainingCompetency[];
+
   @ManyToOne(() => Trainer, trainer => trainer.id)
   @JoinColumn({ name: 'trainer_id' })
   trainer!: Trainer;
@@ -38,7 +44,8 @@ export class Training {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   course_code!: string;
 
@@ -52,15 +59,17 @@ export class Training {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   title!: string;
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: true
   })
-  description!: string;
+  description?: string;
 
   @Column({
     type: 'varchar',
@@ -69,6 +78,13 @@ export class Training {
     nullable: true
   })
   thumbnail?: string;
+
+  @Column({
+    type: 'int',
+    array: false,
+    nullable: true
+  })
+  duration_seconds?: number;
 
   @CreateDateColumn()
   created_at!: Date;

@@ -20,9 +20,10 @@ export class TrainingLocation {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
-  city_name!: string;
+  location!: string;
 
   @CreateDateColumn()
   created_at!: Date;

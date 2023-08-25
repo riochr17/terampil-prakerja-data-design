@@ -26,33 +26,31 @@ export class TrainingSession {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   title!: string;
 
   @Column({
     type: 'int',
-    array: false
+    array: false,
+    nullable: false
   })
   order!: number;
 
   @Column({
     type: 'int',
-    array: false
+    array: false,
+    nullable: true
   })
-  start_day!: number;
-
-  @Column({
-    type: 'int',
-    array: false
-  })
-  duration_day!: number;
+  duration_seconds?: number;
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: true
   })
-  description!: string;
+  description?: string;
 
   @CreateDateColumn()
   created_at!: Date;

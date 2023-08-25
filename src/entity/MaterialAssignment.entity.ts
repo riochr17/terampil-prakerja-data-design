@@ -18,16 +18,12 @@ export class MaterialAssignment {
   session_material!: SessionMaterial;
 
   @Column({
-    type: 'timestamp',
-    array: false
+    type: 'varchar',
+    length: 255,
+    array: false,
+    nullable: true
   })
-  open_assignment_ts!: Date;
-
-  @Column({
-    type: 'timestamp',
-    array: false
-  })
-  close_assignment_ts!: Date;
+  deadline?: string;
 
   @CreateDateColumn()
   created_at!: Date;

@@ -21,15 +21,17 @@ export class Quiz {
   @Column({
     type: 'varchar',
     length: 255,
-    array: false
+    array: false,
+    nullable: false
   })
   label!: string;
 
   @Column({
     type: 'text',
-    array: false
+    array: false,
+    nullable: true
   })
-  description!: string;
+  description?: string;
 
   @CreateDateColumn()
   created_at!: Date;
