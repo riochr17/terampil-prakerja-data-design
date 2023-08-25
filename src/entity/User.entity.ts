@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { TrainingRating } from './TrainingRating.entity';
 import { UserTrainingSchedule } from './UserTrainingSchedule.entity';
 import { VoucherUser } from './VoucherUser.entity';
 import { UserGender } from './UserGender.enum';
@@ -7,6 +8,11 @@ import { UserGender } from './UserGender.enum';
 export class User {
   @PrimaryGeneratedColumn('increment')
   id!: number;
+
+  @OneToMany(() => TrainingRating, _ => _.user, {
+    cascade: true
+  })
+  list_training_rating_user!: TrainingRating[];
 
   @OneToMany(() => UserTrainingSchedule, _ => _.user, {
     cascade: true

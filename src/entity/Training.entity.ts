@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { TrainingRating } from './TrainingRating.entity';
 import { TrainingSession } from './TrainingSession.entity';
 import { TrainingLocation } from './TrainingLocation.entity';
 import { TrainingLibrary } from './TrainingLibrary.entity';
@@ -9,6 +10,11 @@ import { TrainingType } from './TrainingType.enum';
 export class Training {
   @PrimaryGeneratedColumn('increment')
   id!: number;
+
+  @OneToMany(() => TrainingRating, _ => _.training, {
+    cascade: true
+  })
+  list_training_rating_training!: TrainingRating[];
 
   @OneToMany(() => TrainingSession, _ => _.training, {
     cascade: true
@@ -55,6 +61,14 @@ export class Training {
     array: false
   })
   description!: string;
+
+  @Column({
+    type: 'varchar',
+    length: 255,
+    array: false,
+    nullable: true
+  })
+  thumbnail?: string;
 
   @CreateDateColumn()
   created_at!: Date;
