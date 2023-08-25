@@ -119,6 +119,10 @@ export namespace AdminCreateTraining {
     @IsNumber({}, { message: 'Trainer ID must be a number' })
     trainer_id!: number;
 
+    @IsNotEmpty({ message: 'Competency cannot be empty' })
+    @IsString({ message: 'Competency must be a string' })
+    competency!: string;
+
     @IsNotEmpty({ message: 'Course Code cannot be empty' })
     @IsString({ message: 'Course Code must be a string' })
     course_code!: string;
@@ -270,6 +274,10 @@ export namespace AdminUpdateTraining {
     @IsNotEmpty({ message: 'Trainer ID cannot be empty' })
     @IsNumber({}, { message: 'Trainer ID must be a number' })
     trainer_id!: number;
+
+    @IsNotEmpty({ message: 'Competency cannot be empty' })
+    @IsString({ message: 'Competency must be a string' })
+    competency!: string;
 
     @IsNotEmpty({ message: 'Course Code cannot be empty' })
     @IsString({ message: 'Course Code must be a string' })
