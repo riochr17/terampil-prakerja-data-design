@@ -1,6 +1,6 @@
 import { Transform } from "class-transformer";
 import { BaseEndpoint, EndpointMethod, ExpressTransform } from "../base-design";
-import { IsNotEmpty, IsNumber, IsOptional } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { AuthorizedData } from "./authorization.design";
 import { UserTrainingSchedule } from "../../entity/UserTrainingSchedule.entity";
 
@@ -38,6 +38,10 @@ export namespace EnrollTraining {
     @IsNotEmpty({ message: 'Schedule id cannot be empty' })
     @IsNumber({}, { message: 'Schedule id must be a number' })
     training_schedule_id!: number;
+
+    @IsNotEmpty({ message: 'Voucher Code cannot be empty' })
+    @IsString({ message: 'Voucher Code must be a string' })
+    voucher_code!: string;
   }
 
   export class Header extends AuthorizedData {}
