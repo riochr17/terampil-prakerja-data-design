@@ -1,26 +1,25 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { UserTrainingScheduleQuizSelected } from './UserTrainingScheduleQuizSelected.entity';
-import { Quiz } from './Quiz.entity';
+import { GroupQuiz } from './GroupQuiz.entity';
 import { MaterialQuiz } from './MaterialQuiz.entity';
+import { UserTrainingSchedule } from './UserTrainingSchedule.entity';
 
 
-@Entity('GroupQuiz')
-export class GroupQuiz {
+@Entity('UserTrainingScheduleQuizSelected')
+export class UserTrainingScheduleQuizSelected {
   @PrimaryGeneratedColumn('increment')
   id!: number;
 
-  @OneToMany(() => UserTrainingScheduleQuizSelected, _ => _.group_quiz, {
-    cascade: true
-  })
-  list_user_training_schedule_quiz_selected_group_quiz!: UserTrainingScheduleQuizSelected[];
-
-  @ManyToOne(() => Quiz, quiz => quiz.id)
-  @JoinColumn({ name: 'quiz_id' })
-  quiz!: Quiz;
+  @ManyToOne(() => GroupQuiz, group_quiz => group_quiz.id)
+  @JoinColumn({ name: 'group_quiz_id' })
+  group_quiz!: GroupQuiz;
 
   @ManyToOne(() => MaterialQuiz, material_quiz => material_quiz.id)
   @JoinColumn({ name: 'material_quiz_id' })
   material_quiz!: MaterialQuiz;
+
+  @ManyToOne(() => UserTrainingSchedule, user_training_schedule => user_training_schedule.id)
+  @JoinColumn({ name: 'user_training_schedule_id' })
+  user_training_schedule!: UserTrainingSchedule;
 
   @CreateDateColumn()
   created_at!: Date;

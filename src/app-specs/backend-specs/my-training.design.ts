@@ -76,3 +76,21 @@ export namespace GetMyTraining {
     public static url: string = '/my-training';
   }
 }
+
+export namespace GetMyTrainingProgress {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = number;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-training/progress';
+  }
+}

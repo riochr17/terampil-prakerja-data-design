@@ -5,6 +5,7 @@ import { UserOnlineCheck } from './UserOnlineCheck.entity';
 import { UserOfflineCheck } from './UserOfflineCheck.entity';
 import { Certificate } from './Certificate.entity';
 import { Invoice } from './Invoice.entity';
+import { UserTrainingScheduleQuizSelected } from './UserTrainingScheduleQuizSelected.entity';
 import { User } from './User.entity';
 import { TrainingSchedule } from './TrainingSchedule.entity';
 
@@ -43,6 +44,11 @@ export class UserTrainingSchedule {
     cascade: true
   })
   list_invoice_user_training!: Invoice[];
+
+  @OneToMany(() => UserTrainingScheduleQuizSelected, _ => _.user_training_schedule, {
+    cascade: true
+  })
+  list_user_training_schedule_quiz_selected_user_training_schedule!: UserTrainingScheduleQuizSelected[];
 
   @ManyToOne(() => User, user => user.id)
   @JoinColumn({ name: 'user_id' })
