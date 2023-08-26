@@ -42,6 +42,9 @@ import { SubmitQuizAnswer } from "./backend-specs/material-quiz.design";
 import { GetMyTrainingEnrollStatus } from "./backend-specs/my-training.design";
 import { EnrollTraining } from "./backend-specs/my-training.design";
 import { GetMyTraining } from "./backend-specs/my-training.design";
+import { GetMyTrainingProgress } from "./backend-specs/my-training.design";
+import { GetMyTrainingQuizData } from "./backend-specs/my-training.design";
+import { GetMyTrainingQuizResult } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
@@ -99,6 +102,9 @@ export namespace BackendSystem {
     export type IGetMyTrainingEnrollStatus = (param: { query: GetMyTrainingEnrollStatus.Query, header: GetMyTrainingEnrollStatus.Header,  }) => Promise<GetMyTrainingEnrollStatus.Output>
     export type IEnrollTraining = (param: { body: EnrollTraining.Body, header: EnrollTraining.Header,  }) => Promise<EnrollTraining.Output>
     export type IGetMyTraining = (param: { query: GetMyTraining.Query, header: GetMyTraining.Header,  }) => Promise<GetMyTraining.Output>
+    export type IGetMyTrainingProgress = (param: { query: GetMyTrainingProgress.Query, header: GetMyTrainingProgress.Header,  }) => Promise<GetMyTrainingProgress.Output>
+    export type IGetMyTrainingQuizData = (param: { query: GetMyTrainingQuizData.Query, header: GetMyTrainingQuizData.Header,  }) => Promise<GetMyTrainingQuizData.Output>
+    export type IGetMyTrainingQuizResult = (param: { query: GetMyTrainingQuizResult.Query, header: GetMyTrainingQuizResult.Header,  }) => Promise<GetMyTrainingQuizResult.Output>
     export type IGetTraining = (param: { query: GetTraining.Query,  }) => Promise<GetTraining.Output>
     export type IGetTrainingDetail = (param: { query: GetTrainingDetail.Query,  }) => Promise<GetTrainingDetail.Output>
     export type IGetTrainer = (param: { query: GetTrainer.Query,  }) => Promise<GetTrainer.Output>
@@ -695,6 +701,42 @@ export namespace BackendSystem {
         GetMyTraining.Endpoint.method, 
         GetMyTraining.Endpoint.url, 
         { query: GetMyTraining.Query, header: GetMyTraining.Header,  },
+        logic
+      ));
+    }
+
+    public getMyTrainingProgress(logic: Logic.IGetMyTrainingProgress) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetMyTrainingProgress.Endpoint.method, 
+        GetMyTrainingProgress.Endpoint.url, 
+        { query: GetMyTrainingProgress.Query, header: GetMyTrainingProgress.Header,  },
+        logic
+      ));
+    }
+
+    public getMyTrainingQuizData(logic: Logic.IGetMyTrainingQuizData) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetMyTrainingQuizData.Endpoint.method, 
+        GetMyTrainingQuizData.Endpoint.url, 
+        { query: GetMyTrainingQuizData.Query, header: GetMyTrainingQuizData.Header,  },
+        logic
+      ));
+    }
+
+    public getMyTrainingQuizResult(logic: Logic.IGetMyTrainingQuizResult) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetMyTrainingQuizResult.Endpoint.method, 
+        GetMyTrainingQuizResult.Endpoint.url, 
+        { query: GetMyTrainingQuizResult.Query, header: GetMyTrainingQuizResult.Header,  },
         logic
       ));
     }

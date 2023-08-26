@@ -3,6 +3,7 @@ import { BaseEndpoint, EndpointMethod, ExpressTransform } from "../base-design";
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { AuthorizedData } from "./authorization.design";
 import { UserTrainingSchedule } from "../../entity/UserTrainingSchedule.entity";
+import { Quiz } from "../../entity/Quiz.entity";
 
 export namespace GetMyTrainingEnrollStatus {
   export class Query {
@@ -92,5 +93,51 @@ export namespace GetMyTrainingProgress {
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
     public static url: string = '/my-training/progress';
+  }
+}
+
+export namespace GetMyTrainingQuizData {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    id!: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Material Quiz id cannot be empty' })
+    @IsNumber({}, { message: 'Material Quiz id must be a number' })
+    material_quiz_id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = Quiz;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-training/quiz-data';
+  }
+}
+
+export namespace GetMyTrainingQuizResult {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    id!: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Material Quiz id cannot be empty' })
+    @IsNumber({}, { message: 'Material Quiz id must be a number' })
+    material_quiz_id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = number;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-training/quiz-result';
   }
 }
