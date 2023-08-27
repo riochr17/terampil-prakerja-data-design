@@ -7,6 +7,9 @@ import { Quiz } from "../../entity/Quiz.entity";
 import { MaterialOnlineClass } from "../../entity/MaterialOnlineClass.entity";
 import { MaterialOfflineClass } from "../../entity/MaterialOfflineClass.entity";
 import { MaterialAssignment } from "../../entity/MaterialAssignment.entity";
+import { UserOnlineCheck } from "../../entity/UserOnlineCheck.entity";
+import { UserOfflineCheck } from "../../entity/UserOfflineCheck.entity";
+import { UserAssignment } from "../../entity/UserAssignment.entity";
 
 export namespace GetMyTrainingEnrollStatus {
   export class Query {
@@ -163,7 +166,7 @@ export namespace GetMyTrainingOnlineClassData {
 
   export class Header extends AuthorizedData {}
 
-  export type Output = MaterialOnlineClass[];
+  export type Output = UserOnlineCheck[];
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
@@ -186,7 +189,7 @@ export namespace GetMyTrainingOfflineClassData {
 
   export class Header extends AuthorizedData {}
 
-  export type Output = MaterialOfflineClass[];
+  export type Output = UserOfflineCheck[];
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
@@ -209,7 +212,7 @@ export namespace GetMyTrainingAssignmentData {
 
   export class Header extends AuthorizedData {}
 
-  export type Output = MaterialAssignment[];
+  export type Output = UserAssignment | null;
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
