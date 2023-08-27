@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { GroupQuiz } from './GroupQuiz.entity';
 import { QuizQuestion } from './QuizQuestion.entity';
+import { UserTrainingScheduleQuizSelected } from './UserTrainingScheduleQuizSelected.entity';
 
 
 @Entity('Quiz')
@@ -17,6 +18,11 @@ export class Quiz {
     cascade: true
   })
   list_quiz_question_quiz!: QuizQuestion[];
+
+  @OneToMany(() => UserTrainingScheduleQuizSelected, _ => _.quiz, {
+    cascade: true
+  })
+  list_user_training_schedule_quiz_selected_quiz!: UserTrainingScheduleQuizSelected[];
 
   @Column({
     type: 'varchar',

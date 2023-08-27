@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { GroupQuiz } from './GroupQuiz.entity';
+import { Quiz } from './Quiz.entity';
 import { MaterialQuiz } from './MaterialQuiz.entity';
 import { UserTrainingSchedule } from './UserTrainingSchedule.entity';
 
@@ -9,9 +9,9 @@ export class UserTrainingScheduleQuizSelected {
   @PrimaryGeneratedColumn('increment')
   id!: number;
 
-  @ManyToOne(() => GroupQuiz, group_quiz => group_quiz.id)
-  @JoinColumn({ name: 'group_quiz_id' })
-  group_quiz!: GroupQuiz;
+  @ManyToOne(() => Quiz, quiz => quiz.id)
+  @JoinColumn({ name: 'quiz_id' })
+  quiz!: Quiz;
 
   @ManyToOne(() => MaterialQuiz, material_quiz => material_quiz.id)
   @JoinColumn({ name: 'material_quiz_id' })
