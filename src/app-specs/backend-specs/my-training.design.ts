@@ -4,6 +4,9 @@ import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { AuthorizedData } from "./authorization.design";
 import { UserTrainingSchedule } from "../../entity/UserTrainingSchedule.entity";
 import { Quiz } from "../../entity/Quiz.entity";
+import { MaterialOnlineClass } from "../../entity/MaterialOnlineClass.entity";
+import { MaterialOfflineClass } from "../../entity/MaterialOfflineClass.entity";
+import { MaterialAssignment } from "../../entity/MaterialAssignment.entity";
 
 export namespace GetMyTrainingEnrollStatus {
   export class Query {
@@ -142,5 +145,74 @@ export namespace GetMyTrainingQuizResult {
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
     public static url: string = '/my-training/quiz-result';
+  }
+}
+
+export namespace GetMyTrainingOnlineClassData {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    id!: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Material Online Class id cannot be empty' })
+    @IsNumber({}, { message: 'Material Online Class id must be a number' })
+    material_online_class_id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = MaterialOnlineClass[];
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-training/online-class-data';
+  }
+}
+
+export namespace GetMyTrainingOfflineClassData {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    id!: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Material Offline Class id cannot be empty' })
+    @IsNumber({}, { message: 'Material Offline Class id must be a number' })
+    material_onffine_class_id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = MaterialOfflineClass[];
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-training/offline-class-data';
+  }
+}
+
+export namespace GetMyTrainingAssignmentData {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    id!: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Material Assignment id cannot be empty' })
+    @IsNumber({}, { message: 'Material Assignment id must be a number' })
+    material_assignment_id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = MaterialAssignment[];
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-training/assignment-data';
   }
 }

@@ -45,6 +45,9 @@ import { GetMyTraining } from "./backend-specs/my-training.design";
 import { GetMyTrainingProgress } from "./backend-specs/my-training.design";
 import { GetMyTrainingQuizData } from "./backend-specs/my-training.design";
 import { GetMyTrainingQuizResult } from "./backend-specs/my-training.design";
+import { GetMyTrainingOnlineClassData } from "./backend-specs/my-training.design";
+import { GetMyTrainingOfflineClassData } from "./backend-specs/my-training.design";
+import { GetMyTrainingAssignmentData } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
@@ -415,6 +418,27 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<GetMyTrainingQuizResult.Output>(GetMyTrainingQuizResult.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async getMyTrainingOnlineClassData(query: GetMyTrainingOnlineClassData.Query, header: GetMyTrainingOnlineClassData.Header, ): Promise<GetMyTrainingOnlineClassData.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyTrainingOnlineClassData.Output>(GetMyTrainingOnlineClassData.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async getMyTrainingOfflineClassData(query: GetMyTrainingOfflineClassData.Query, header: GetMyTrainingOfflineClassData.Header, ): Promise<GetMyTrainingOfflineClassData.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyTrainingOfflineClassData.Output>(GetMyTrainingOfflineClassData.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async getMyTrainingAssignmentData(query: GetMyTrainingAssignmentData.Query, header: GetMyTrainingAssignmentData.Header, ): Promise<GetMyTrainingAssignmentData.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyTrainingAssignmentData.Output>(GetMyTrainingAssignmentData.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async getTraining(query: GetTraining.Query, ): Promise<GetTraining.Output> {
