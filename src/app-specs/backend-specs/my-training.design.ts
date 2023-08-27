@@ -88,7 +88,10 @@ export namespace GetMyTrainingProgress {
 
   export class Header extends AuthorizedData {}
 
-  export type Output = number;
+  export interface Output {
+    percentage: number
+    list_completed_session_material_id: number[]
+  }
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
