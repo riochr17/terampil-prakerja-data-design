@@ -26,7 +26,10 @@ export namespace Register {
     gender!: UserGender;
   }
 
-  export type Output = boolean;
+  export interface Output {
+    token: string
+    user: User
+  }
 
   export abstract class Endpoint extends BaseEndpoint<any, Body, any, Output> {
     public static method: EndpointMethod = 'post';
