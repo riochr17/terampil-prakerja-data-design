@@ -1,6 +1,6 @@
 import { Transform } from "class-transformer";
 import { BaseEndpoint, EndpointMethod, ExpressTransform } from "../base-design";
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsString } from "class-validator";
 import { AuthorizedData } from "./authorization.design";
 
 export namespace SubmitQuizAnswer {
@@ -21,7 +21,7 @@ export namespace SubmitQuizAnswer {
 
     @Transform(ExpressTransform.boolean)
     @IsNotEmpty({ message: 'last question indicator cannot be empty' })
-    @IsString({ message: 'last question indicator must be a boolean' })
+    @IsBoolean({ message: 'last question indicator must be a boolean' })
     last_question!: boolean;
   }
 
