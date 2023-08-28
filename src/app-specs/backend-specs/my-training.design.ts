@@ -86,7 +86,10 @@ export namespace GetMyTraining {
 
   export class Header extends AuthorizedData {}
 
-  export type Output = UserTrainingSchedule[];
+  export interface Output {
+    total: number
+    data: UserTrainingSchedule[]
+  }
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
