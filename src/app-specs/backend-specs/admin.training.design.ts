@@ -61,6 +61,11 @@ export namespace AdminCreateTraining {
   }
 
   export class TrainingSessionMaterial {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Duration seconds cannot be empty' })
+    @IsNumber({}, { message: 'Duration seconds must be a number' })
+    duration_seconds!: number;
+
     @IsNotEmpty({ message: 'Type cannot be empty' })
     @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
     type!: SessionMaterialType;
@@ -99,6 +104,11 @@ export namespace AdminCreateTraining {
   }
 
   export class TrainingSessionBody {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Duration seconds cannot be empty' })
+    @IsNumber({}, { message: 'Duration seconds must be a number' })
+    duration_seconds!: number;
+
     @IsNotEmpty({ message: 'Title cannot be empty' })
     @IsString({ message: 'Title must be a string' })
     title!: string;
@@ -207,6 +217,11 @@ export namespace AdminUpdateTraining {
     @IsNumber({}, { message: 'Training ID must be a number' })
     id?: number;
 
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Duration seconds cannot be empty' })
+    @IsNumber({}, { message: 'Duration seconds must be a number' })
+    duration_seconds!: number;
+
     @IsNotEmpty({ message: 'Type cannot be empty' })
     @IsEnum(SessionMaterialType, { message: 'Type must be a string' })
     type!: SessionMaterialType;
@@ -249,6 +264,11 @@ export namespace AdminUpdateTraining {
     @IsOptional()
     @IsNumber({}, { message: 'Training ID must be a number' })
     id?: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Duration seconds cannot be empty' })
+    @IsNumber({}, { message: 'Duration seconds must be a number' })
+    duration_seconds!: number;
 
     @IsNotEmpty({ message: 'Title cannot be empty' })
     @IsString({ message: 'Title must be a string' })
