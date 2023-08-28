@@ -8,6 +8,8 @@ import { Invoice } from './Invoice.entity';
 import { UserTrainingScheduleQuizSelected } from './UserTrainingScheduleQuizSelected.entity';
 import { User } from './User.entity';
 import { TrainingSchedule } from './TrainingSchedule.entity';
+import { SessionMaterial } from './SessionMaterial.entity';
+import { TrainingSession } from './TrainingSession.entity';
 
 
 @Entity('UserTrainingSchedule')
@@ -65,6 +67,29 @@ export class UserTrainingSchedule {
     nullable: false
   })
   redeem_voucher_code!: string;
+
+  @Column({
+    type: 'float',
+    array: false,
+    nullable: true
+  })
+  progress?: number;
+
+  @ManyToOne(() => SessionMaterial, session_material => session_material.id)
+  @JoinColumn({ name: 'current_session_material_id' })
+  current_session_material!: SessionMaterial;
+
+  @ManyToOne(() => SessionMaterial, session_material => session_material.id)
+  @JoinColumn({ name: 'next_session_material_id' })
+  next_session_material!: SessionMaterial;
+
+  @ManyToOne(() => TrainingSession, training_session => training_session.id)
+  @JoinColumn({ name: 'current_training_session_id' })
+  current_training_session!: TrainingSession;
+
+  @ManyToOne(() => TrainingSession, training_session => training_session.id)
+  @JoinColumn({ name: 'next_training_session_id' })
+  next_training_session!: TrainingSession;
 
   @CreateDateColumn()
   created_at!: Date;

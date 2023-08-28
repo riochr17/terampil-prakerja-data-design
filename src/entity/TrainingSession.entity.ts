@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { SessionMaterial } from './SessionMaterial.entity';
 import { TrainingScheduleSession } from './TrainingScheduleSession.entity';
+import { UserTrainingSchedule } from './UserTrainingSchedule.entity';
 import { Training } from './Training.entity';
 
 
@@ -18,6 +19,16 @@ export class TrainingSession {
     cascade: true
   })
   list_training_schedule_session_training_session!: TrainingScheduleSession[];
+
+  @OneToMany(() => UserTrainingSchedule, _ => _.current_training_session, {
+    cascade: true
+  })
+  list_user_training_schedule_current_training_session!: UserTrainingSchedule[];
+
+  @OneToMany(() => UserTrainingSchedule, _ => _.next_training_session, {
+    cascade: true
+  })
+  list_user_training_schedule_next_training_session!: UserTrainingSchedule[];
 
   @ManyToOne(() => Training, training => training.id)
   @JoinColumn({ name: 'training_id' })
