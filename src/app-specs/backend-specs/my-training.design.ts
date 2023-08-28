@@ -1,6 +1,6 @@
 import { Transform } from "class-transformer";
 import { BaseEndpoint, EndpointMethod, ExpressTransform } from "../base-design";
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { AuthorizedData } from "./authorization.design";
 import { UserTrainingSchedule } from "../../entity/UserTrainingSchedule.entity";
 import { Quiz } from "../../entity/Quiz.entity";
@@ -62,6 +62,12 @@ export namespace EnrollTraining {
 }
 
 export namespace GetMyTraining {
+  export enum Filter {
+    ALL = 'ALL',
+    ON_PROGRESS = 'ON_PROGRESS',
+    DONE = 'DONE'
+  }
+
   export class Query {
     @Transform(ExpressTransform.integer)
     @IsOptional()
@@ -72,6 +78,10 @@ export namespace GetMyTraining {
     @IsOptional()
     @IsNumber({}, { message: 'Offset must be a number' })
     offset?: number;
+
+    @IsOptional()
+    @IsEnum(Filter, { message: 'Filter must be an enum' })
+    filter?: Filter;
   }
 
   export class Header extends AuthorizedData {}
