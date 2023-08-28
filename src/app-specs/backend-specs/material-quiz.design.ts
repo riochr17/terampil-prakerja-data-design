@@ -16,8 +16,13 @@ export namespace SubmitQuizAnswer {
     user_training_id!: number;
 
     @IsNotEmpty({ message: 'answer cannot be empty' })
-    @IsString({ message: 'answer must be string' })
+    @IsString({ message: 'answer must be a string' })
     answer!: string;
+
+    @Transform(ExpressTransform.boolean)
+    @IsNotEmpty({ message: 'last question indicator cannot be empty' })
+    @IsString({ message: 'last question indicator must be a boolean' })
+    last_question!: boolean;
   }
 
   export class Header extends AuthorizedData {}
