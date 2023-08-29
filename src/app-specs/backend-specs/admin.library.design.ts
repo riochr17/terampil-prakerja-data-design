@@ -9,6 +9,11 @@ import { LibraryType } from "../../entity/LibraryType.enum";
 export namespace AdminGetLibrary {
   export class Query {
     @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training ID cannot be empty' })
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    training_id!: number;
+    
+    @Transform(ExpressTransform.integer)
     @IsOptional()
     @IsNumber({}, { message: 'Limit must be a number' })
     limit?: number;
