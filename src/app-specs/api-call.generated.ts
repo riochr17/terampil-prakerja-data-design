@@ -12,6 +12,11 @@ import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDetailBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminGetLibrary } from "./backend-specs/admin.library.design";
+import { AdminCreateLibrary } from "./backend-specs/admin.library.design";
+import { AdminUpdateLibrary } from "./backend-specs/admin.library.design";
+import { AdminDeleteLibrary } from "./backend-specs/admin.library.design";
+import { AdminDetailLibrary } from "./backend-specs/admin.library.design";
 import { AdminLogin } from "./backend-specs/admin.login.design";
 import { AdminGetTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
@@ -30,6 +35,8 @@ import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
 import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
 import { AdminDetailTraining } from "./backend-specs/admin.training.design";
+import { AdminGetUser } from "./backend-specs/admin.user.design";
+import { AdminDetailUser } from "./backend-specs/admin.user.design";
 import { AdminGetVoucher } from "./backend-specs/admin.voucher.design";
 import { AdminCreateVoucher } from "./backend-specs/admin.voucher.design";
 import { AdminUpdateVoucher } from "./backend-specs/admin.voucher.design";
@@ -48,12 +55,17 @@ import { GetMyTrainingQuizResult } from "./backend-specs/my-training.design";
 import { GetMyTrainingOnlineClassData } from "./backend-specs/my-training.design";
 import { GetMyTrainingOfflineClassData } from "./backend-specs/my-training.design";
 import { GetMyTrainingAssignmentData } from "./backend-specs/my-training.design";
+import { GetMyCertificateDetailByTraining } from "./backend-specs/my-training.design";
+import { GetMyCertificate } from "./backend-specs/my-training.design";
+import { GetMyCertificateDetail } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
 import { GetTrainerDetail } from "./backend-specs/public.design";
 import { SettingData } from "./backend-specs/setting.design";
 import { SettingDetail } from "./backend-specs/setting.design";
+import { SubmitTrainingReview } from "./backend-specs/training-review.design";
+import { GetTrainingReview } from "./backend-specs/training-review.design";
 
 
 export interface APICallParameters {
@@ -189,6 +201,41 @@ export class APICall {
     return (await this.axios_instance?.get<AdminDetailBankSoal.Output>(AdminDetailBankSoal.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
+  public async adminGetLibrary(query: AdminGetLibrary.Query, header: AdminGetLibrary.Header, ): Promise<AdminGetLibrary.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetLibrary.Output>(AdminGetLibrary.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminCreateLibrary(body: AdminCreateLibrary.Body, header: AdminCreateLibrary.Header, ): Promise<AdminCreateLibrary.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateLibrary.Output>(AdminCreateLibrary.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminUpdateLibrary(body: AdminUpdateLibrary.Body, header: AdminUpdateLibrary.Header, ): Promise<AdminUpdateLibrary.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateLibrary.Output>(AdminUpdateLibrary.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminDeleteLibrary(query: AdminDeleteLibrary.Query, header: AdminDeleteLibrary.Header, ): Promise<AdminDeleteLibrary.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteLibrary.Output>(AdminDeleteLibrary.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDetailLibrary(query: AdminDetailLibrary.Query, header: AdminDetailLibrary.Header, ): Promise<AdminDetailLibrary.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailLibrary.Output>(AdminDetailLibrary.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
   public async adminLogin(body: AdminLogin.Body, ): Promise<AdminLogin.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
@@ -313,6 +360,20 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<AdminDetailTraining.Output>(AdminDetailTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminGetUser(query: AdminGetUser.Query, header: AdminGetUser.Header, ): Promise<AdminGetUser.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetUser.Output>(AdminGetUser.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDetailUser(query: AdminDetailUser.Query, header: AdminDetailUser.Header, ): Promise<AdminDetailUser.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailUser.Output>(AdminDetailUser.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
   public async adminGetVoucher(query: AdminGetVoucher.Query, header: AdminGetVoucher.Header, ): Promise<AdminGetVoucher.Output> {
@@ -441,6 +502,27 @@ export class APICall {
     return (await this.axios_instance?.get<GetMyTrainingAssignmentData.Output>(GetMyTrainingAssignmentData.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
+  public async getMyCertificateDetailByTraining(query: GetMyCertificateDetailByTraining.Query, header: GetMyCertificateDetailByTraining.Header, ): Promise<GetMyCertificateDetailByTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyCertificateDetailByTraining.Output>(GetMyCertificateDetailByTraining.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async getMyCertificate(query: GetMyCertificate.Query, header: GetMyCertificate.Header, ): Promise<GetMyCertificate.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyCertificate.Output>(GetMyCertificate.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async getMyCertificateDetail(query: GetMyCertificateDetail.Query, header: GetMyCertificateDetail.Header, ): Promise<GetMyCertificateDetail.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetMyCertificateDetail.Output>(GetMyCertificateDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
   public async getTraining(query: GetTraining.Query, ): Promise<GetTraining.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
@@ -481,6 +563,20 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<SettingDetail.Output>(SettingDetail.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async submitTrainingReview(body: SubmitTrainingReview.Body, header: SubmitTrainingReview.Header, ): Promise<SubmitTrainingReview.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<SubmitTrainingReview.Output>(SubmitTrainingReview.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async getTrainingReview(query: GetTrainingReview.Query, ): Promise<GetTrainingReview.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<GetTrainingReview.Output>(GetTrainingReview.Endpoint.url, { params: query,  }))!.data;
   }
 
 }

@@ -12,6 +12,11 @@ import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDetailBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminGetLibrary } from "./backend-specs/admin.library.design";
+import { AdminCreateLibrary } from "./backend-specs/admin.library.design";
+import { AdminUpdateLibrary } from "./backend-specs/admin.library.design";
+import { AdminDeleteLibrary } from "./backend-specs/admin.library.design";
+import { AdminDetailLibrary } from "./backend-specs/admin.library.design";
 import { AdminLogin } from "./backend-specs/admin.login.design";
 import { AdminGetTrainer } from "./backend-specs/admin.trainer.design";
 import { AdminCreateTrainer } from "./backend-specs/admin.trainer.design";
@@ -30,6 +35,8 @@ import { AdminCreateTraining } from "./backend-specs/admin.training.design";
 import { AdminUpdateTraining } from "./backend-specs/admin.training.design";
 import { AdminDeleteTraining } from "./backend-specs/admin.training.design";
 import { AdminDetailTraining } from "./backend-specs/admin.training.design";
+import { AdminGetUser } from "./backend-specs/admin.user.design";
+import { AdminDetailUser } from "./backend-specs/admin.user.design";
 import { AdminGetVoucher } from "./backend-specs/admin.voucher.design";
 import { AdminCreateVoucher } from "./backend-specs/admin.voucher.design";
 import { AdminUpdateVoucher } from "./backend-specs/admin.voucher.design";
@@ -48,12 +55,17 @@ import { GetMyTrainingQuizResult } from "./backend-specs/my-training.design";
 import { GetMyTrainingOnlineClassData } from "./backend-specs/my-training.design";
 import { GetMyTrainingOfflineClassData } from "./backend-specs/my-training.design";
 import { GetMyTrainingAssignmentData } from "./backend-specs/my-training.design";
+import { GetMyCertificateDetailByTraining } from "./backend-specs/my-training.design";
+import { GetMyCertificate } from "./backend-specs/my-training.design";
+import { GetMyCertificateDetail } from "./backend-specs/my-training.design";
 import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
 import { GetTrainerDetail } from "./backend-specs/public.design";
 import { SettingData } from "./backend-specs/setting.design";
 import { SettingDetail } from "./backend-specs/setting.design";
+import { SubmitTrainingReview } from "./backend-specs/training-review.design";
+import { GetTrainingReview } from "./backend-specs/training-review.design";
 
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { ValidationError, validateOrReject } from 'class-validator';
@@ -75,6 +87,11 @@ export namespace BackendSystem {
     export type IAdminUpdateBankSoal = (param: { body: AdminUpdateBankSoal.Body, header: AdminUpdateBankSoal.Header,  }) => Promise<AdminUpdateBankSoal.Output>
     export type IAdminDeleteBankSoal = (param: { query: AdminDeleteBankSoal.Query, header: AdminDeleteBankSoal.Header,  }) => Promise<AdminDeleteBankSoal.Output>
     export type IAdminDetailBankSoal = (param: { query: AdminDetailBankSoal.Query, header: AdminDetailBankSoal.Header,  }) => Promise<AdminDetailBankSoal.Output>
+    export type IAdminGetLibrary = (param: { query: AdminGetLibrary.Query, header: AdminGetLibrary.Header,  }) => Promise<AdminGetLibrary.Output>
+    export type IAdminCreateLibrary = (param: { body: AdminCreateLibrary.Body, header: AdminCreateLibrary.Header,  }) => Promise<AdminCreateLibrary.Output>
+    export type IAdminUpdateLibrary = (param: { body: AdminUpdateLibrary.Body, header: AdminUpdateLibrary.Header,  }) => Promise<AdminUpdateLibrary.Output>
+    export type IAdminDeleteLibrary = (param: { query: AdminDeleteLibrary.Query, header: AdminDeleteLibrary.Header,  }) => Promise<AdminDeleteLibrary.Output>
+    export type IAdminDetailLibrary = (param: { query: AdminDetailLibrary.Query, header: AdminDetailLibrary.Header,  }) => Promise<AdminDetailLibrary.Output>
     export type IAdminLogin = (param: { body: AdminLogin.Body,  }) => Promise<AdminLogin.Output>
     export type IAdminGetTrainer = (param: { query: AdminGetTrainer.Query, header: AdminGetTrainer.Header,  }) => Promise<AdminGetTrainer.Output>
     export type IAdminCreateTrainer = (param: { body: AdminCreateTrainer.Body, header: AdminCreateTrainer.Header,  }) => Promise<AdminCreateTrainer.Output>
@@ -93,6 +110,8 @@ export namespace BackendSystem {
     export type IAdminUpdateTraining = (param: { body: AdminUpdateTraining.Body, header: AdminUpdateTraining.Header,  }) => Promise<AdminUpdateTraining.Output>
     export type IAdminDeleteTraining = (param: { query: AdminDeleteTraining.Query, header: AdminDeleteTraining.Header,  }) => Promise<AdminDeleteTraining.Output>
     export type IAdminDetailTraining = (param: { query: AdminDetailTraining.Query, header: AdminDetailTraining.Header,  }) => Promise<AdminDetailTraining.Output>
+    export type IAdminGetUser = (param: { query: AdminGetUser.Query, header: AdminGetUser.Header,  }) => Promise<AdminGetUser.Output>
+    export type IAdminDetailUser = (param: { query: AdminDetailUser.Query, header: AdminDetailUser.Header,  }) => Promise<AdminDetailUser.Output>
     export type IAdminGetVoucher = (param: { query: AdminGetVoucher.Query, header: AdminGetVoucher.Header,  }) => Promise<AdminGetVoucher.Output>
     export type IAdminCreateVoucher = (param: { body: AdminCreateVoucher.Body, header: AdminCreateVoucher.Header,  }) => Promise<AdminCreateVoucher.Output>
     export type IAdminUpdateVoucher = (param: { body: AdminUpdateVoucher.Body, header: AdminUpdateVoucher.Header,  }) => Promise<AdminUpdateVoucher.Output>
@@ -111,12 +130,17 @@ export namespace BackendSystem {
     export type IGetMyTrainingOnlineClassData = (param: { query: GetMyTrainingOnlineClassData.Query, header: GetMyTrainingOnlineClassData.Header,  }) => Promise<GetMyTrainingOnlineClassData.Output>
     export type IGetMyTrainingOfflineClassData = (param: { query: GetMyTrainingOfflineClassData.Query, header: GetMyTrainingOfflineClassData.Header,  }) => Promise<GetMyTrainingOfflineClassData.Output>
     export type IGetMyTrainingAssignmentData = (param: { query: GetMyTrainingAssignmentData.Query, header: GetMyTrainingAssignmentData.Header,  }) => Promise<GetMyTrainingAssignmentData.Output>
+    export type IGetMyCertificateDetailByTraining = (param: { query: GetMyCertificateDetailByTraining.Query, header: GetMyCertificateDetailByTraining.Header,  }) => Promise<GetMyCertificateDetailByTraining.Output>
+    export type IGetMyCertificate = (param: { query: GetMyCertificate.Query, header: GetMyCertificate.Header,  }) => Promise<GetMyCertificate.Output>
+    export type IGetMyCertificateDetail = (param: { query: GetMyCertificateDetail.Query, header: GetMyCertificateDetail.Header,  }) => Promise<GetMyCertificateDetail.Output>
     export type IGetTraining = (param: { query: GetTraining.Query,  }) => Promise<GetTraining.Output>
     export type IGetTrainingDetail = (param: { query: GetTrainingDetail.Query,  }) => Promise<GetTrainingDetail.Output>
     export type IGetTrainer = (param: { query: GetTrainer.Query,  }) => Promise<GetTrainer.Output>
     export type IGetTrainerDetail = (param: { query: GetTrainerDetail.Query,  }) => Promise<GetTrainerDetail.Output>
     export type ISettingData = (param: { query: SettingData.Query, header: SettingData.Header,  }) => Promise<SettingData.Output>
     export type ISettingDetail = (param: { query: SettingDetail.Query, header: SettingDetail.Header,  }) => Promise<SettingDetail.Output>
+    export type ISubmitTrainingReview = (param: { body: SubmitTrainingReview.Body, header: SubmitTrainingReview.Header,  }) => Promise<SubmitTrainingReview.Output>
+    export type IGetTrainingReview = (param: { query: GetTrainingReview.Query,  }) => Promise<GetTrainingReview.Output>
 
   }
   
@@ -351,6 +375,66 @@ export namespace BackendSystem {
       ));
     }
 
+    public adminGetLibrary(logic: Logic.IAdminGetLibrary) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetLibrary.Endpoint.method, 
+        AdminGetLibrary.Endpoint.url, 
+        { query: AdminGetLibrary.Query, header: AdminGetLibrary.Header,  },
+        logic
+      ));
+    }
+
+    public adminCreateLibrary(logic: Logic.IAdminCreateLibrary) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateLibrary.Endpoint.method, 
+        AdminCreateLibrary.Endpoint.url, 
+        { body: AdminCreateLibrary.Body, header: AdminCreateLibrary.Header,  },
+        logic
+      ));
+    }
+
+    public adminUpdateLibrary(logic: Logic.IAdminUpdateLibrary) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateLibrary.Endpoint.method, 
+        AdminUpdateLibrary.Endpoint.url, 
+        { body: AdminUpdateLibrary.Body, header: AdminUpdateLibrary.Header,  },
+        logic
+      ));
+    }
+
+    public adminDeleteLibrary(logic: Logic.IAdminDeleteLibrary) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteLibrary.Endpoint.method, 
+        AdminDeleteLibrary.Endpoint.url, 
+        { query: AdminDeleteLibrary.Query, header: AdminDeleteLibrary.Header,  },
+        logic
+      ));
+    }
+
+    public adminDetailLibrary(logic: Logic.IAdminDetailLibrary) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDetailLibrary.Endpoint.method, 
+        AdminDetailLibrary.Endpoint.url, 
+        { query: AdminDetailLibrary.Query, header: AdminDetailLibrary.Header,  },
+        logic
+      ));
+    }
+
     public adminLogin(logic: Logic.IAdminLogin) {
       if (!this.express) {
         throw new Error(`System have not initialized yet`);
@@ -563,6 +647,30 @@ export namespace BackendSystem {
         AdminDetailTraining.Endpoint.method, 
         AdminDetailTraining.Endpoint.url, 
         { query: AdminDetailTraining.Query, header: AdminDetailTraining.Header,  },
+        logic
+      ));
+    }
+
+    public adminGetUser(logic: Logic.IAdminGetUser) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetUser.Endpoint.method, 
+        AdminGetUser.Endpoint.url, 
+        { query: AdminGetUser.Query, header: AdminGetUser.Header,  },
+        logic
+      ));
+    }
+
+    public adminDetailUser(logic: Logic.IAdminDetailUser) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDetailUser.Endpoint.method, 
+        AdminDetailUser.Endpoint.url, 
+        { query: AdminDetailUser.Query, header: AdminDetailUser.Header,  },
         logic
       ));
     }
@@ -783,6 +891,42 @@ export namespace BackendSystem {
       ));
     }
 
+    public getMyCertificateDetailByTraining(logic: Logic.IGetMyCertificateDetailByTraining) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetMyCertificateDetailByTraining.Endpoint.method, 
+        GetMyCertificateDetailByTraining.Endpoint.url, 
+        { query: GetMyCertificateDetailByTraining.Query, header: GetMyCertificateDetailByTraining.Header,  },
+        logic
+      ));
+    }
+
+    public getMyCertificate(logic: Logic.IGetMyCertificate) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetMyCertificate.Endpoint.method, 
+        GetMyCertificate.Endpoint.url, 
+        { query: GetMyCertificate.Query, header: GetMyCertificate.Header,  },
+        logic
+      ));
+    }
+
+    public getMyCertificateDetail(logic: Logic.IGetMyCertificateDetail) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetMyCertificateDetail.Endpoint.method, 
+        GetMyCertificateDetail.Endpoint.url, 
+        { query: GetMyCertificateDetail.Query, header: GetMyCertificateDetail.Header,  },
+        logic
+      ));
+    }
+
     public getTraining(logic: Logic.IGetTraining) {
       if (!this.express) {
         throw new Error(`System have not initialized yet`);
@@ -851,6 +995,30 @@ export namespace BackendSystem {
         SettingDetail.Endpoint.method, 
         SettingDetail.Endpoint.url, 
         { query: SettingDetail.Query, header: SettingDetail.Header,  },
+        logic
+      ));
+    }
+
+    public submitTrainingReview(logic: Logic.ISubmitTrainingReview) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        SubmitTrainingReview.Endpoint.method, 
+        SubmitTrainingReview.Endpoint.url, 
+        { body: SubmitTrainingReview.Body, header: SubmitTrainingReview.Header,  },
+        logic
+      ));
+    }
+
+    public getTrainingReview(logic: Logic.IGetTrainingReview) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        GetTrainingReview.Endpoint.method, 
+        GetTrainingReview.Endpoint.url, 
+        { query: GetTrainingReview.Query,  },
         logic
       ));
     }
