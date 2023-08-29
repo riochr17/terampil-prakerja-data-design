@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { TrainingLibrary } from './TrainingLibrary.entity';
+import { Training } from './Training.entity';
 import { LibraryType } from './LibraryType.enum';
 
 @Entity('Library')
@@ -7,10 +7,9 @@ export class Library {
   @PrimaryGeneratedColumn('increment')
   id!: number;
 
-  @OneToMany(() => TrainingLibrary, _ => _.library, {
-    cascade: true
-  })
-  list_training_library_library!: TrainingLibrary[];
+  @ManyToOne(() => Training, training => training.id)
+  @JoinColumn({ name: 'training_id' })
+  training!: Training;
 
   @Column({
     type: 'varchar',

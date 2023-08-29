@@ -37,11 +37,6 @@ export class SessionMaterial {
   })
   list_user_training_schedule_current_session_material!: UserTrainingSchedule[];
 
-  @OneToMany(() => UserTrainingSchedule, _ => _.next_session_material, {
-    cascade: true
-  })
-  list_user_training_schedule_next_session_material!: UserTrainingSchedule[];
-
   @ManyToOne(() => TrainingSession, training_session => training_session.id)
   @JoinColumn({ name: 'training_session_id' })
   training_session!: TrainingSession;

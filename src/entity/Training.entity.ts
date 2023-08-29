@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToO
 import { TrainingRating } from './TrainingRating.entity';
 import { TrainingSession } from './TrainingSession.entity';
 import { TrainingLocation } from './TrainingLocation.entity';
-import { TrainingLibrary } from './TrainingLibrary.entity';
+import { Library } from './Library.entity';
 import { TrainingCompetency } from './TrainingCompetency.entity';
 import { Trainer } from './Trainer.entity';
 import { TrainingType } from './TrainingType.enum';
@@ -27,10 +27,10 @@ export class Training {
   })
   list_training_location_training!: TrainingLocation[];
 
-  @OneToMany(() => TrainingLibrary, _ => _.training, {
+  @OneToMany(() => Library, _ => _.training, {
     cascade: true
   })
-  list_training_library_training!: TrainingLibrary[];
+  list_library_training!: Library[];
 
   @OneToMany(() => TrainingCompetency, _ => _.training, {
     cascade: true
