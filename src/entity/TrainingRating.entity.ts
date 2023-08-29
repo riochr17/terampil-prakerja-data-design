@@ -23,6 +23,13 @@ export class TrainingRating {
   })
   rating!: number;
 
+  @Column({
+    type: 'text',
+    array: false,
+    nullable: true
+  })
+  notes?: string;
+
   @CreateDateColumn()
   created_at!: Date;
 

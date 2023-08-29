@@ -4,12 +4,10 @@ import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-valida
 import { AuthorizedData } from "./authorization.design";
 import { UserTrainingSchedule } from "../../entity/UserTrainingSchedule.entity";
 import { Quiz } from "../../entity/Quiz.entity";
-import { MaterialOnlineClass } from "../../entity/MaterialOnlineClass.entity";
-import { MaterialOfflineClass } from "../../entity/MaterialOfflineClass.entity";
-import { MaterialAssignment } from "../../entity/MaterialAssignment.entity";
 import { UserOnlineCheck } from "../../entity/UserOnlineCheck.entity";
 import { UserOfflineCheck } from "../../entity/UserOfflineCheck.entity";
 import { UserAssignment } from "../../entity/UserAssignment.entity";
+import { Certificate } from "../../entity/Certificate.entity";
 
 export namespace GetMyTrainingEnrollStatus {
   export class Query {
@@ -230,5 +228,67 @@ export namespace GetMyTrainingAssignmentData {
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
     public static method: EndpointMethod = 'get';
     public static url: string = '/my-training/assignment-data';
+  }
+}
+
+export namespace GetMyCertificateDetailByTraining {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
+    training_id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = Certificate;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-certificate/detail/by-training';
+  }
+}
+
+export namespace GetMyCertificate {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Limit must be a number' })
+    limit?: number;
+
+    @Transform(ExpressTransform.integer)
+    @IsOptional()
+    @IsNumber({}, { message: 'Offset must be a number' })
+    offset?: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export interface Output {
+    total: number
+    data: Certificate[]
+  }
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-certificate';
+  }
+}
+
+export namespace GetMyCertificateDetail {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Certificate id cannot be empty' })
+    @IsNumber({}, { message: 'Certificate id must be a number' })
+    id!: number;
+  }
+
+  export class Header extends AuthorizedData {}
+
+  export type Output = Certificate;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/my-certificate/detail';
   }
 }
