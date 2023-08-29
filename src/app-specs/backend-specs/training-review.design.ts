@@ -7,8 +7,8 @@ import { TrainingRating } from "../../entity/TrainingRating.entity";
 export namespace SubmitTrainingReview {
   export class Body {
     @Transform(ExpressTransform.integer)
-    @IsNotEmpty({ message: 'Material Online Class id cannot be empty' })
-    @IsNumber({}, { message: 'Material Online Class id must be a number' })
+    @IsNotEmpty({ message: 'Training id cannot be empty' })
+    @IsNumber({}, { message: 'Training id must be a number' })
     training_id!: number;
 
     @Transform(ExpressTransform.integer)
