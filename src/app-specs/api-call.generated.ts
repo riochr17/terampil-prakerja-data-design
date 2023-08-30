@@ -588,11 +588,11 @@ export class APICall {
     return (await this.axios_instance?.get<GetTrainingReview.Output>(GetTrainingReview.Endpoint.url, { params: query,  }))!.data;
   }
 
-  public async myTrainingReview(query: MyTrainingReview.Query, ): Promise<MyTrainingReview.Output> {
+  public async myTrainingReview(query: MyTrainingReview.Query, header: MyTrainingReview.Header, ): Promise<MyTrainingReview.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
     }
-    return (await this.axios_instance?.get<MyTrainingReview.Output>(MyTrainingReview.Endpoint.url, { params: query,  }))!.data;
+    return (await this.axios_instance?.get<MyTrainingReview.Output>(MyTrainingReview.Endpoint.url, { params: query, headers: header as any,  }))!.data;
   }
 
 }

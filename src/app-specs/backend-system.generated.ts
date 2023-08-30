@@ -144,7 +144,7 @@ export namespace BackendSystem {
     export type ISettingDetail = (param: { query: SettingDetail.Query, header: SettingDetail.Header,  }) => Promise<SettingDetail.Output>
     export type ISubmitTrainingReview = (param: { body: SubmitTrainingReview.Body, header: SubmitTrainingReview.Header,  }) => Promise<SubmitTrainingReview.Output>
     export type IGetTrainingReview = (param: { query: GetTrainingReview.Query,  }) => Promise<GetTrainingReview.Output>
-    export type IMyTrainingReview = (param: { query: MyTrainingReview.Query,  }) => Promise<MyTrainingReview.Output>
+    export type IMyTrainingReview = (param: { query: MyTrainingReview.Query, header: MyTrainingReview.Header,  }) => Promise<MyTrainingReview.Output>
 
   }
   
@@ -1046,7 +1046,7 @@ export namespace BackendSystem {
       this.express.use(this.createRoute(
         MyTrainingReview.Endpoint.method, 
         MyTrainingReview.Endpoint.url, 
-        { query: MyTrainingReview.Query,  },
+        { query: MyTrainingReview.Query, header: MyTrainingReview.Header,  },
         logic
       ));
     }
