@@ -63,6 +63,8 @@ export namespace MyTrainingReview {
     training_id!: number;
   }
 
+  export class Header extends AuthorizedData {}
+
   export type Output = TrainingRating;
 
   export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
