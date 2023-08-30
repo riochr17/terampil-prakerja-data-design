@@ -62,10 +62,12 @@ import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
 import { GetTrainerDetail } from "./backend-specs/public.design";
+import { UpcomingTraining } from "./backend-specs/public.design";
 import { SettingData } from "./backend-specs/setting.design";
 import { SettingDetail } from "./backend-specs/setting.design";
 import { SubmitTrainingReview } from "./backend-specs/training-review.design";
 import { GetTrainingReview } from "./backend-specs/training-review.design";
+import { MyTrainingReview } from "./backend-specs/training-review.design";
 
 
 export interface APICallParameters {
@@ -551,6 +553,13 @@ export class APICall {
     return (await this.axios_instance?.get<GetTrainerDetail.Output>(GetTrainerDetail.Endpoint.url, { params: query,  }))!.data;
   }
 
+  public async upcomingTraining(): Promise<UpcomingTraining.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<UpcomingTraining.Output>(UpcomingTraining.Endpoint.url, {  }))!.data;
+  }
+
   public async settingData(query: SettingData.Query, header: SettingData.Header, ): Promise<SettingData.Output> {
     if (!this.axios_instance) {
       throw new Error(`Axios have not initialized yet`)
@@ -577,6 +586,13 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<GetTrainingReview.Output>(GetTrainingReview.Endpoint.url, { params: query,  }))!.data;
+  }
+
+  public async myTrainingReview(query: MyTrainingReview.Query, ): Promise<MyTrainingReview.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<MyTrainingReview.Output>(MyTrainingReview.Endpoint.url, { params: query,  }))!.data;
   }
 
 }

@@ -54,3 +54,19 @@ export namespace GetTrainingReview {
     public static url: string = '/training-review';
   }
 }
+
+export namespace MyTrainingReview {
+  export class Query {
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Training ID cannot be empty' })
+    @IsNumber({}, { message: 'Training ID must be a number' })
+    training_id!: number;
+  }
+
+  export type Output = TrainingRating;
+
+  export abstract class Endpoint extends BaseEndpoint<Query, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/training-review/my-review';
+  }
+}

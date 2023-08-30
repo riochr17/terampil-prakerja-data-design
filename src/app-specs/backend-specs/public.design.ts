@@ -83,3 +83,12 @@ export namespace GetTrainerDetail {
     public static url: string = '/trainer/detail';
   }
 }
+
+export namespace UpcomingTraining {
+  export type Output = Training;
+
+  export abstract class Endpoint extends BaseEndpoint<any, any, any, Output> {
+    public static method: EndpointMethod = 'get';
+    public static url: string = '/training/upcoming';
+  }
+}

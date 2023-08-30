@@ -62,10 +62,12 @@ import { GetTraining } from "./backend-specs/public.design";
 import { GetTrainingDetail } from "./backend-specs/public.design";
 import { GetTrainer } from "./backend-specs/public.design";
 import { GetTrainerDetail } from "./backend-specs/public.design";
+import { UpcomingTraining } from "./backend-specs/public.design";
 import { SettingData } from "./backend-specs/setting.design";
 import { SettingDetail } from "./backend-specs/setting.design";
 import { SubmitTrainingReview } from "./backend-specs/training-review.design";
 import { GetTrainingReview } from "./backend-specs/training-review.design";
+import { MyTrainingReview } from "./backend-specs/training-review.design";
 
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { ValidationError, validateOrReject } from 'class-validator';
@@ -137,10 +139,12 @@ export namespace BackendSystem {
     export type IGetTrainingDetail = (param: { query: GetTrainingDetail.Query,  }) => Promise<GetTrainingDetail.Output>
     export type IGetTrainer = (param: { query: GetTrainer.Query,  }) => Promise<GetTrainer.Output>
     export type IGetTrainerDetail = (param: { query: GetTrainerDetail.Query,  }) => Promise<GetTrainerDetail.Output>
+    export type IUpcomingTraining = (param: {  }) => Promise<UpcomingTraining.Output>
     export type ISettingData = (param: { query: SettingData.Query, header: SettingData.Header,  }) => Promise<SettingData.Output>
     export type ISettingDetail = (param: { query: SettingDetail.Query, header: SettingDetail.Header,  }) => Promise<SettingDetail.Output>
     export type ISubmitTrainingReview = (param: { body: SubmitTrainingReview.Body, header: SubmitTrainingReview.Header,  }) => Promise<SubmitTrainingReview.Output>
     export type IGetTrainingReview = (param: { query: GetTrainingReview.Query,  }) => Promise<GetTrainingReview.Output>
+    export type IMyTrainingReview = (param: { query: MyTrainingReview.Query,  }) => Promise<MyTrainingReview.Output>
 
   }
   
@@ -975,6 +979,18 @@ export namespace BackendSystem {
       ));
     }
 
+    public upcomingTraining(logic: Logic.IUpcomingTraining) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        UpcomingTraining.Endpoint.method, 
+        UpcomingTraining.Endpoint.url, 
+        {  },
+        logic
+      ));
+    }
+
     public settingData(logic: Logic.ISettingData) {
       if (!this.express) {
         throw new Error(`System have not initialized yet`);
@@ -1019,6 +1035,18 @@ export namespace BackendSystem {
         GetTrainingReview.Endpoint.method, 
         GetTrainingReview.Endpoint.url, 
         { query: GetTrainingReview.Query,  },
+        logic
+      ));
+    }
+
+    public myTrainingReview(logic: Logic.IMyTrainingReview) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        MyTrainingReview.Endpoint.method, 
+        MyTrainingReview.Endpoint.url, 
+        { query: MyTrainingReview.Query,  },
         logic
       ));
     }
