@@ -19,14 +19,16 @@ export class TrainingRating {
   @Column({
     type: 'int',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   rating!: number;
 
   @Column({
     type: 'text',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   notes?: string;
 

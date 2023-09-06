@@ -16,7 +16,8 @@ export class Trainer {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   name!: string;
 
@@ -24,14 +25,16 @@ export class Trainer {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   profile_picture_url?: string;
 
   @Column({
     type: 'text',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   description?: string;
 
@@ -39,7 +42,8 @@ export class Trainer {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   occupation!: string;
 
@@ -47,7 +51,8 @@ export class Trainer {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   signature_image_url!: string;
 

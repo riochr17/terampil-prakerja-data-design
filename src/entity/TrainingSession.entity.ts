@@ -33,28 +33,32 @@ export class TrainingSession {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   title!: string;
 
   @Column({
     type: 'int',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   order!: number;
 
   @Column({
     type: 'int',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   duration_seconds?: number;
 
   @Column({
     type: 'text',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   description?: string;
 

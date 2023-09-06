@@ -11,14 +11,16 @@ export class Setting {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   key!: string;
 
   @Column({
     type: 'text',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   value!: string;
 

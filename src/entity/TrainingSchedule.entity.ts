@@ -27,14 +27,16 @@ export class TrainingSchedule {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   description?: string;
 
   @Column({
     type: 'int',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   quota!: number;
 

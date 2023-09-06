@@ -19,7 +19,8 @@ export class UserAssignment {
   @Column({
     type: 'text',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   data!: string;
 

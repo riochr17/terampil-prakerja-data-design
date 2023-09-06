@@ -28,7 +28,8 @@ export class User {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   fullname!: string;
 
@@ -36,7 +37,8 @@ export class User {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   profile_picture_url?: string;
 
@@ -44,7 +46,8 @@ export class User {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   email!: string;
 
@@ -52,7 +55,8 @@ export class User {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   phone_number?: string;
 
@@ -60,7 +64,8 @@ export class User {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   password!: string;
 
@@ -74,7 +79,8 @@ export class User {
   @Column({
     type: 'boolean',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   active!: boolean;
 

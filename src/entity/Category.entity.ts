@@ -1,20 +1,16 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Training } from './Training.entity';
 
 
-
-@Entity('Admin')
-export class Admin {
+@Entity('Category')
+export class Category {
   @PrimaryGeneratedColumn('increment')
   id!: number;
 
-  @Column({
-    type: 'varchar',
-    length: 255,
-    array: false,
-    nullable: false,
-    
+  @OneToMany(() => Training, _ => _.category, {
+    cascade: true
   })
-  email!: string;
+  list_training_category!: Training[];
 
   @Column({
     type: 'varchar',
@@ -23,25 +19,15 @@ export class Admin {
     nullable: false,
     
   })
-  password!: string;
+  label!: string;
 
   @Column({
-    type: 'varchar',
-    length: 255,
-    array: false,
-    nullable: false,
-    
-  })
-  fullname!: string;
-
-  @Column({
-    type: 'varchar',
-    length: 255,
+    type: 'text',
     array: false,
     nullable: true,
     
   })
-  profile_picture_url?: string;
+  description?: string;
 
   @CreateDateColumn()
   created_at!: Date;

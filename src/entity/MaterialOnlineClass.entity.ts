@@ -21,7 +21,8 @@ export class MaterialOnlineClass {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   meeting_url!: string;
 

@@ -4,6 +4,7 @@ import { TrainingSession } from './TrainingSession.entity';
 import { TrainingLocation } from './TrainingLocation.entity';
 import { Library } from './Library.entity';
 import { TrainingCompetency } from './TrainingCompetency.entity';
+import { Category } from './Category.entity';
 import { Trainer } from './Trainer.entity';
 import { TrainingType } from './TrainingType.enum';
 
@@ -37,6 +38,10 @@ export class Training {
   })
   list_training_competency_training!: TrainingCompetency[];
 
+  @ManyToOne(() => Category, category => category.id)
+  @JoinColumn({ name: 'category_id' })
+  category!: Category;
+
   @ManyToOne(() => Trainer, trainer => trainer.id)
   @JoinColumn({ name: 'trainer_id' })
   trainer!: Trainer;
@@ -45,7 +50,8 @@ export class Training {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   course_code!: string;
 
@@ -60,14 +66,16 @@ export class Training {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   title!: string;
 
   @Column({
     type: 'text',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   description?: string;
 
@@ -75,14 +83,16 @@ export class Training {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   thumbnail?: string;
 
   @Column({
     type: 'int',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   duration_seconds?: number;
 

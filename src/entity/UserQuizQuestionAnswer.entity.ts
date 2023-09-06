@@ -20,7 +20,8 @@ export class UserQuizQuestionAnswer {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   answer!: string;
 

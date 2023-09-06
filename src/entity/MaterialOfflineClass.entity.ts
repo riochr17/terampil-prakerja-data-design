@@ -20,7 +20,8 @@ export class MaterialOfflineClass {
   @Column({
     type: 'text',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   location!: string;
 

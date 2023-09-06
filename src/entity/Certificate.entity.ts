@@ -14,7 +14,8 @@ export class Certificate {
   @Column({
     type: 'timestamp',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   issued_at!: Date;
 
@@ -22,7 +23,8 @@ export class Certificate {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   serial_number!: string;
 

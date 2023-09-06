@@ -64,14 +64,16 @@ export class UserTrainingSchedule {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   redeem_voucher_code!: string;
 
   @Column({
     type: 'float',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   progress?: number;
 

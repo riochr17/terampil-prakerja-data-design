@@ -21,7 +21,8 @@ export class TrainingLocation {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   location!: string;
 

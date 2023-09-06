@@ -26,7 +26,8 @@ export class QuizQuestion {
   @Column({
     type: 'text',
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   question!: string;
 
@@ -34,7 +35,8 @@ export class QuizQuestion {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   answer!: string;
 

@@ -15,7 +15,8 @@ export class TrainingCompetency {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   label!: string;
 

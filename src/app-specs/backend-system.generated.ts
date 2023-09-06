@@ -12,6 +12,12 @@ import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDetailBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminGetCategory } from "./backend-specs/admin.category.design";
+import { AdminCreateCategory } from "./backend-specs/admin.category.design";
+import { AdminUpdateCategory } from "./backend-specs/admin.category.design";
+import { AdminDeleteCategory } from "./backend-specs/admin.category.design";
+import { AdminDetailCategory } from "./backend-specs/admin.category.design";
+import { AdminDashboardUpcomingThisMonth } from "./backend-specs/admin.dashboard.design";
 import { AdminGetLibrary } from "./backend-specs/admin.library.design";
 import { AdminCreateLibrary } from "./backend-specs/admin.library.design";
 import { AdminUpdateLibrary } from "./backend-specs/admin.library.design";
@@ -89,6 +95,12 @@ export namespace BackendSystem {
     export type IAdminUpdateBankSoal = (param: { body: AdminUpdateBankSoal.Body, header: AdminUpdateBankSoal.Header,  }) => Promise<AdminUpdateBankSoal.Output>
     export type IAdminDeleteBankSoal = (param: { query: AdminDeleteBankSoal.Query, header: AdminDeleteBankSoal.Header,  }) => Promise<AdminDeleteBankSoal.Output>
     export type IAdminDetailBankSoal = (param: { query: AdminDetailBankSoal.Query, header: AdminDetailBankSoal.Header,  }) => Promise<AdminDetailBankSoal.Output>
+    export type IAdminGetCategory = (param: { query: AdminGetCategory.Query, header: AdminGetCategory.Header,  }) => Promise<AdminGetCategory.Output>
+    export type IAdminCreateCategory = (param: { body: AdminCreateCategory.Body, header: AdminCreateCategory.Header,  }) => Promise<AdminCreateCategory.Output>
+    export type IAdminUpdateCategory = (param: { body: AdminUpdateCategory.Body, header: AdminUpdateCategory.Header,  }) => Promise<AdminUpdateCategory.Output>
+    export type IAdminDeleteCategory = (param: { query: AdminDeleteCategory.Query, header: AdminDeleteCategory.Header,  }) => Promise<AdminDeleteCategory.Output>
+    export type IAdminDetailCategory = (param: { query: AdminDetailCategory.Query, header: AdminDetailCategory.Header,  }) => Promise<AdminDetailCategory.Output>
+    export type IAdminDashboardUpcomingThisMonth = (param: { header: AdminDashboardUpcomingThisMonth.Header,  }) => Promise<AdminDashboardUpcomingThisMonth.Output>
     export type IAdminGetLibrary = (param: { query: AdminGetLibrary.Query, header: AdminGetLibrary.Header,  }) => Promise<AdminGetLibrary.Output>
     export type IAdminCreateLibrary = (param: { body: AdminCreateLibrary.Body, header: AdminCreateLibrary.Header,  }) => Promise<AdminCreateLibrary.Output>
     export type IAdminUpdateLibrary = (param: { body: AdminUpdateLibrary.Body, header: AdminUpdateLibrary.Header,  }) => Promise<AdminUpdateLibrary.Output>
@@ -375,6 +387,78 @@ export namespace BackendSystem {
         AdminDetailBankSoal.Endpoint.method, 
         AdminDetailBankSoal.Endpoint.url, 
         { query: AdminDetailBankSoal.Query, header: AdminDetailBankSoal.Header,  },
+        logic
+      ));
+    }
+
+    public adminGetCategory(logic: Logic.IAdminGetCategory) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminGetCategory.Endpoint.method, 
+        AdminGetCategory.Endpoint.url, 
+        { query: AdminGetCategory.Query, header: AdminGetCategory.Header,  },
+        logic
+      ));
+    }
+
+    public adminCreateCategory(logic: Logic.IAdminCreateCategory) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminCreateCategory.Endpoint.method, 
+        AdminCreateCategory.Endpoint.url, 
+        { body: AdminCreateCategory.Body, header: AdminCreateCategory.Header,  },
+        logic
+      ));
+    }
+
+    public adminUpdateCategory(logic: Logic.IAdminUpdateCategory) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminUpdateCategory.Endpoint.method, 
+        AdminUpdateCategory.Endpoint.url, 
+        { body: AdminUpdateCategory.Body, header: AdminUpdateCategory.Header,  },
+        logic
+      ));
+    }
+
+    public adminDeleteCategory(logic: Logic.IAdminDeleteCategory) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDeleteCategory.Endpoint.method, 
+        AdminDeleteCategory.Endpoint.url, 
+        { query: AdminDeleteCategory.Query, header: AdminDeleteCategory.Header,  },
+        logic
+      ));
+    }
+
+    public adminDetailCategory(logic: Logic.IAdminDetailCategory) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDetailCategory.Endpoint.method, 
+        AdminDetailCategory.Endpoint.url, 
+        { query: AdminDetailCategory.Query, header: AdminDetailCategory.Header,  },
+        logic
+      ));
+    }
+
+    public adminDashboardUpcomingThisMonth(logic: Logic.IAdminDashboardUpcomingThisMonth) {
+      if (!this.express) {
+        throw new Error(`System have not initialized yet`);
+      }
+      this.express.use(this.createRoute(
+        AdminDashboardUpcomingThisMonth.Endpoint.method, 
+        AdminDashboardUpcomingThisMonth.Endpoint.url, 
+        { header: AdminDashboardUpcomingThisMonth.Header,  },
         logic
       ));
     }

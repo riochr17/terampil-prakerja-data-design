@@ -12,6 +12,12 @@ import { AdminCreateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminUpdateBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDeleteBankSoal } from "./backend-specs/admin.bank-soal.design";
 import { AdminDetailBankSoal } from "./backend-specs/admin.bank-soal.design";
+import { AdminGetCategory } from "./backend-specs/admin.category.design";
+import { AdminCreateCategory } from "./backend-specs/admin.category.design";
+import { AdminUpdateCategory } from "./backend-specs/admin.category.design";
+import { AdminDeleteCategory } from "./backend-specs/admin.category.design";
+import { AdminDetailCategory } from "./backend-specs/admin.category.design";
+import { AdminDashboardUpcomingThisMonth } from "./backend-specs/admin.dashboard.design";
 import { AdminGetLibrary } from "./backend-specs/admin.library.design";
 import { AdminCreateLibrary } from "./backend-specs/admin.library.design";
 import { AdminUpdateLibrary } from "./backend-specs/admin.library.design";
@@ -201,6 +207,48 @@ export class APICall {
       throw new Error(`Axios have not initialized yet`)
     }
     return (await this.axios_instance?.get<AdminDetailBankSoal.Output>(AdminDetailBankSoal.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminGetCategory(query: AdminGetCategory.Query, header: AdminGetCategory.Header, ): Promise<AdminGetCategory.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminGetCategory.Output>(AdminGetCategory.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminCreateCategory(body: AdminCreateCategory.Body, header: AdminCreateCategory.Header, ): Promise<AdminCreateCategory.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.post<AdminCreateCategory.Output>(AdminCreateCategory.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminUpdateCategory(body: AdminUpdateCategory.Body, header: AdminUpdateCategory.Header, ): Promise<AdminUpdateCategory.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.put<AdminUpdateCategory.Output>(AdminUpdateCategory.Endpoint.url, body, { headers: header as any,  }))!.data;
+  }
+
+  public async adminDeleteCategory(query: AdminDeleteCategory.Query, header: AdminDeleteCategory.Header, ): Promise<AdminDeleteCategory.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.delete<AdminDeleteCategory.Output>(AdminDeleteCategory.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDetailCategory(query: AdminDetailCategory.Query, header: AdminDetailCategory.Header, ): Promise<AdminDetailCategory.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDetailCategory.Output>(AdminDetailCategory.Endpoint.url, { params: query, headers: header as any,  }))!.data;
+  }
+
+  public async adminDashboardUpcomingThisMonth(header: AdminDashboardUpcomingThisMonth.Header, ): Promise<AdminDashboardUpcomingThisMonth.Output> {
+    if (!this.axios_instance) {
+      throw new Error(`Axios have not initialized yet`)
+    }
+    return (await this.axios_instance?.get<AdminDashboardUpcomingThisMonth.Output>(AdminDashboardUpcomingThisMonth.Endpoint.url, { headers: header as any,  }))!.data;
   }
 
   public async adminGetLibrary(query: AdminGetLibrary.Query, header: AdminGetLibrary.Header, ): Promise<AdminGetLibrary.Output> {

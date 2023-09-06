@@ -15,7 +15,8 @@ export class Invoice {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   invoice_number!: string;
 
@@ -23,7 +24,8 @@ export class Invoice {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   redeem_code!: string;
 

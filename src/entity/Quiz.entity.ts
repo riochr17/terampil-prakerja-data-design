@@ -28,14 +28,16 @@ export class Quiz {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: false
+    nullable: false,
+    
   })
   label!: string;
 
   @Column({
     type: 'text',
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   description?: string;
 

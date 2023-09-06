@@ -21,7 +21,8 @@ export class MaterialAssignment {
     type: 'varchar',
     length: 255,
     array: false,
-    nullable: true
+    nullable: true,
+    
   })
   deadline?: string;
 
