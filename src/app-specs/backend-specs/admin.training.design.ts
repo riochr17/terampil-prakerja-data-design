@@ -129,6 +129,11 @@ export namespace AdminCreateTraining {
     @IsNumber({}, { message: 'Trainer ID must be a number' })
     trainer_id!: number;
 
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Category ID cannot be empty' })
+    @IsNumber({}, { message: 'Category ID must be a number' })
+    category_id!: number;
+
     @IsNotEmpty({ message: 'Banner cannot be empty' })
     @IsString({ message: 'Banner must be a string' })
     banner_url!: string;
@@ -297,6 +302,11 @@ export namespace AdminUpdateTraining {
     @IsNotEmpty({ message: 'Banner cannot be empty' })
     @IsString({ message: 'Banner must be a string' })
     banner_url!: string;
+
+    @Transform(ExpressTransform.integer)
+    @IsNotEmpty({ message: 'Category ID cannot be empty' })
+    @IsNumber({}, { message: 'Category ID must be a number' })
+    category_id!: number;
 
     @Transform(ExpressTransform.integer)
     @IsNotEmpty({ message: 'Trainer ID cannot be empty' })
